@@ -39,7 +39,7 @@ from .tokenization_albert import AlbertTokenizer
 from .tokenization_bert import BertTokenizer, BertTokenizerFast
 from .tokenization_bert_japanese import BertJapaneseTokenizer
 from .tokenization_camembert import CamembertTokenizer
-from .tokenization_ctrl import CTRLTokenizer, CTRLTokenizerFast
+from .tokenization_ctrl import CTRLTokenizer
 from .tokenization_distilbert import DistilBertTokenizer, DistilBertTokenizerFast
 from .tokenization_gpt2 import GPT2Tokenizer, GPT2TokenizerFast
 from .tokenization_openai import OpenAIGPTTokenizer, OpenAIGPTTokenizerFast
@@ -68,7 +68,7 @@ TOKENIZER_MAPPING = OrderedDict(
         (TransfoXLConfig, (TransfoXLTokenizer, None)),
         (XLNetConfig, (XLNetTokenizer, None)),
         (XLMConfig, (XLMTokenizer, None)),
-        (CTRLConfig, (CTRLTokenizer, CTRLTokenizerFast)),
+        (CTRLConfig, (CTRLTokenizer, None)),
     ]
 )
 
