@@ -45,6 +45,7 @@ class NERTransformer(BaseTransformer):
         logger.info("4")
         tensorboard_logs = {"loss": loss,
                             "rate": self.lr_scheduler.get_last_lr()[-1]}
+        logger.info("5")
         return {"loss": loss, "log": tensorboard_logs}
 
     def load_dataset(self, mode, batch_size):

@@ -278,7 +278,7 @@ def generic_train(model, args):
         accumulate_grad_batches=args.gradient_accumulation_steps,
         gpus=args.n_gpu,
         max_epochs=args.num_train_epochs,
-        # gradient_clip_val=args.max_grad_norm,
+        gradient_clip_val=args.max_grad_norm,
         checkpoint_callback=checkpoint_callback,
     )
 
@@ -290,8 +290,8 @@ def generic_train(model, args):
         d["gpus"] = 0
 
     if args.fp16:
-        d["use_amp"]=args.fp16,
-        d["amp_level"]=args.fp16_opt_level,
+        d["use_amp"]=args.fp16
+        d["amp_level"]=args.fp16_opt_level
 
 
     trainer = pl.Trainer(**d)
