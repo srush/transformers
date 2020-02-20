@@ -123,8 +123,11 @@ class BaseTransformer(pl.LightningModule):
     def optimizer_step(self, epoch, batch_idx, optimizer, optimizer_idx, second_order_closure=None):
 
         # Step each time.
+        logger.info("5")
         optimizer.step()
+        logger.info("6")
         self.lr_scheduler.step()
+        logger.info("7")
         optimizer.zero_grad()
 
     def get_tqdm_dict(self):
