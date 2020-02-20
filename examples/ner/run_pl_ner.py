@@ -14,7 +14,7 @@ from utils_ner import convert_examples_to_features, get_labels, read_examples_fr
 
 import torch_xla
 logger = logging.getLogger(__name__)
-
+import torch_xla.distributed.xla_multiprocessing as xmp
 
 class NERTransformer(BaseTransformer):
     """
@@ -182,6 +182,8 @@ class NERTransformer(BaseTransformer):
 
         if not self.is_tpu and self.proc_rank == 0 and mode == "train":
             torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset, and the others will use the cache
+
+        xmp.rendezvous("check")
 
 
         # Convert to Tensors and build dataset
