@@ -96,44 +96,45 @@ class BaseTransformer(pl.LightningModule):
 
     def configure_optimizers(self):
         "Prepare optimizer and schedule (linear warmup and decay)"
-        model = self.model
-        t_total = (
-            len(self.train_dataloader())
-            // self.hparams.gradient_accumulation_steps
-            * float(self.hparams.num_train_epochs)
-        )
-        no_decay = ["bias", "LayerNorm.weight"]
-        optimizer_grouped_parameters = [
-            {
-                "params": [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay)],
-                "weight_decay": self.hparams.weight_decay,
-            },
-            {
-                "params": [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay)],
-                "weight_decay": 0.0,
-            },
-        ]
-        optimizer = AdamW(optimizer_grouped_parameters, lr=self.hparams.learning_rate, eps=self.hparams.adam_epsilon)
-        scheduler = get_linear_schedule_with_warmup(
-            optimizer, num_warmup_steps=self.hparams.warmup_steps, num_training_steps=t_total
-        )
-        self.lr_scheduler = scheduler
-        return [optimizer]
+        return torch.optim.Adam(self.parameters(), lr=0.0004)
+        # model = self.model
+        # t_total = (
+        #     len(self.train_dataloader())
+        #     // self.hparams.gradient_accumulation_steps
+        #     * float(self.hparams.num_train_epochs)
+        # )
+        # no_decay = ["bias", "LayerNorm.weight"]
+        # optimizer_grouped_parameters = [
+        #     {
+        #         "params": [p for n, p in model.named_parameters() if not any(nd in n for nd in no_decay)],
+        #         "weight_decay": self.hparams.weight_decay,
+        #     },
+        #     {
+        #         "params": [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay)],
+        #         "weight_decay": 0.0,
+        #     },
+        # ]
+        # optimizer = AdamW(optimizer_grouped_parameters, lr=self.hparams.learning_rate, eps=self.hparams.adam_epsilon)
+        # scheduler = get_linear_schedule_with_warmup(
+        #     optimizer, num_warmup_steps=self.hparams.warmup_steps, num_training_steps=t_total
+        # )
+        # self.lr_scheduler = scheduler
+        # return [optimizer]
 
-    def optimizer_step(self, epoch, batch_idx, optimizer, optimizer_idx, second_order_closure=None):
+    # def optimizer_step(self, epoch, batch_idx, optimizer, optimizer_idx, second_order_closure=None):
 
-        # Step each time.
-        logger.info("5")
-        optimizer.step()
-        logger.info("6")
-        self.lr_scheduler.step()
-        logger.info("7")
-        optimizer.zero_grad()
+    #     # Step each time.
+    #     logger.info("5")
+    #     optimizer.step()
+    #     logger.info("6")
+    #     self.lr_scheduler.step()
+    #     logger.info("7")
+    #     optimizer.zero_grad()
 
-    def get_tqdm_dict(self):
-        tqdm_dict = {"loss": "{:.3f}".format(self.trainer.avg_loss), "lr": self.lr_scheduler.get_last_lr()[-1]}
+    # def get_tqdm_dict(self):
+    #     tqdm_dict = {"loss": "{:.3f}".format(self.trainer.avg_loss), "lr": self.lr_scheduler.get_last_lr()[-1]}
 
-        return tqdm_dict
+    #     return tqdm_dict
 
     def test_step(self, batch, batch_nb):
         return self.validation_step(batch, batch_nb)
@@ -278,7 +279,7 @@ def generic_train(model, args):
         accumulate_grad_batches=args.gradient_accumulation_steps,
         gpus=args.n_gpu,
         max_epochs=args.num_train_epochs,
-        gradient_clip_val=args.max_grad_norm,
+        # gradient_clip_val=args.max_grad_norm,
         checkpoint_callback=checkpoint_callback,
     )
 
