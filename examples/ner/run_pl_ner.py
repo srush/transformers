@@ -38,8 +38,8 @@ class NERTransformer(BaseTransformer):
                 batch[2] if self.hparams.model_type in ["bert", "xlnet"] else None
             )  # XLM and RoBERTa don"t use segment_ids
         logger.info("2")
-        # logger.info(batch[0].type())
-        # logger.info(self.model.type())
+        logger.info(batch[0].type())
+        logger.info(self.model.type())
         outputs = self.forward(**inputs)
         logger.info("3")
         loss = outputs[0]
