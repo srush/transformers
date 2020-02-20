@@ -97,7 +97,6 @@ class BaseTransformer(pl.LightningModule):
     def configure_optimizers(self):
         "Prepare optimizer and schedule (linear warmup and decay)"
         model = self.model
-        logger.info("config opt")
         t_total = (
             len(self.train_dataloader())
             // self.hparams.gradient_accumulation_steps
@@ -114,12 +113,10 @@ class BaseTransformer(pl.LightningModule):
                 "weight_decay": 0.0,
             },
         ]
-        logger.info("config opt 2")
         optimizer = AdamW(optimizer_grouped_parameters, lr=self.hparams.learning_rate, eps=self.hparams.adam_epsilon)
         scheduler = get_linear_schedule_with_warmup(
             optimizer, num_warmup_steps=self.hparams.warmup_steps, num_training_steps=t_total
         )
-        logger.info("config opt 3")
         self.lr_scheduler = scheduler
         return [optimizer]
 
@@ -154,7 +151,8 @@ class BaseTransformer(pl.LightningModule):
         return self.load_dataset("test", self.hparams.eval_batch_size)
 
     def init_ddp_connection(self, proc_rank, world_size):
-        self.proc_rank = proc_rank
+        if self.hparams.n_tpu > 0:
+            self.proc_rank = proc_rank
         super(BaseTransformer, self).init_ddp_connection(proc_rank, world_size)
 
     def train_sampler(self, dataset):

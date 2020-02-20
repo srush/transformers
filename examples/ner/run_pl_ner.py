@@ -31,7 +31,6 @@ class NERTransformer(BaseTransformer):
 
     def training_step(self, batch, batch_num):
         "Compute loss"
-        logger.info("train start")
         inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[3]}
         if self.hparams.model_type != "distilbert":
             inputs["token_type_ids"] = (
@@ -56,24 +55,21 @@ class NERTransformer(BaseTransformer):
         return dataloader
 
     def validation_step(self, batch, batch_nb):
-        logger.info("valid start")
         inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[3]}
         if self.hparams.model_type != "distilbert":
             inputs["token_type_ids"] = (
                 batch[2] if self.hparams.model_type in ["bert", "xlnet"] else None
             )  # XLM and RoBERTa don"t use segment_ids
         outputs = self.forward(**inputs)
-        logger.info("valid mid")
         tmp_eval_loss, logits = outputs[:2]
         preds = logits.detach().cpu().numpy()
         out_label_ids = inputs["labels"].detach().cpu().numpy()
-        logger.info("valid ret")
+
         return {"val_loss": tmp_eval_loss.detach().cpu(),
                 "pred": preds, "target": out_label_ids}
 
     def _eval_end(self, outputs):
         "Task specific validation"
-        logger.info("evalid start")
 
         val_loss_mean = torch.stack([x["val_loss"] for x in outputs]).mean()
         preds = np.concatenate([x["pred"] for x in outputs], axis=0)
@@ -98,11 +94,9 @@ class NERTransformer(BaseTransformer):
         }
 
         if self.is_logger():
-            logger.info(self.proc_rank)
             logger.info("***** Eval results *****")
             for key in sorted(results.keys()):
                 logger.info("  %s = %s", key, str(results[key]))
-        logger.info("evalid end")
 
         tensorboard_logs = results
         ret = {k: v for k, v in results.items()}
@@ -185,17 +179,13 @@ class NERTransformer(BaseTransformer):
         if not self.is_tpu and self.proc_rank == 0 and mode == "train":
             torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset, and the others will use the cache
 
-        logger.info("making datest")
 
         # Convert to Tensors and build dataset
         all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
         all_input_mask = torch.tensor([f.input_mask for f in features], dtype=torch.long)
         all_segment_ids = torch.tensor([f.segment_ids for f in features], dtype=torch.long)
         all_label_ids = torch.tensor([f.label_ids for f in features], dtype=torch.long)
-
-        logger.info("finishing dataset")
         dataset = TensorDataset(all_input_ids, all_input_mask, all_segment_ids, all_label_ids)
-        logger.info("finished data")
 
         return dataset
 
