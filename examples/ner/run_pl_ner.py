@@ -183,7 +183,7 @@ class NERTransformer(BaseTransformer):
         if not self.is_tpu and self.proc_rank == 0 and mode == "train":
             torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset, and the others will use the cache
 
-        xmp.rendezvous("check")
+        #xmp.rendezvous("check")
 
 
         # Convert to Tensors and build dataset
