@@ -32,7 +32,7 @@ class NERTransformer(BaseTransformer):
     def training_step(self, batch, batch_num):
         "Compute loss"
         print(torch_xla._XLAC._xla_metrics_report())
-        inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[3]}
+        inputs = {"input_ids": batch[0], "attention_mask": None, "labels": batch[3]}
         logger.info("%s %s %s %s"%(batch[0].shape, batch[1].shape, batch[2].shape, batch[3].shape))
         if self.hparams.model_type != "distilbert":
             inputs["token_type_ids"] = (
