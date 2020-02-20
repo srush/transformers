@@ -31,18 +31,16 @@ class NERTransformer(BaseTransformer):
 
     def training_step(self, batch, batch_num):
         "Compute loss"
-        logger.info("1")
         inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[3]}
+        logger.info(batch[0].shape, batch[1].shape, batch[3].shape)
         if self.hparams.model_type != "distilbert":
             inputs["token_type_ids"] = (
                 batch[2] if self.hparams.model_type in ["bert", "xlnet"] else None
             )  # XLM and RoBERTa don"t use segment_ids
-        logger.info("2")
         outputs = self.forward(**inputs)
-        logger.info("3")
         loss = outputs[0]
 
-        logger.info("4")
+
         tensorboard_logs = {"loss": loss}
                             # "rate": self.lr_scheduler.get_last_lr()[-1]}
         logger.info("5")
