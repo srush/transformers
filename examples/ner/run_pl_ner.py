@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, Tenso
 from transformer_base import BaseTransformer, add_generic_args, generic_train
 from utils_ner import convert_examples_to_features, get_labels, read_examples_from_file
 
-
+import torch_xla
 logger = logging.getLogger(__name__)
 
 
@@ -31,8 +31,9 @@ class NERTransformer(BaseTransformer):
 
     def training_step(self, batch, batch_num):
         "Compute loss"
+        print(torch_xla._XLAC._xla_metrics_report())
         inputs = {"input_ids": batch[0], "attention_mask": batch[1], "labels": batch[3]}
-        logger.info("%s %s %s "%(batch[0].shape, batch[1].shape, batch[3].shape))
+        logger.info("%s %s %s %s"%(batch[0].shape, batch[1].shape, batch[2].shape, batch[3].shape))
         if self.hparams.model_type != "distilbert":
             inputs["token_type_ids"] = (
                 batch[2] if self.hparams.model_type in ["bert", "xlnet"] else None
@@ -43,7 +44,7 @@ class NERTransformer(BaseTransformer):
 
         tensorboard_logs = {"loss": loss}
                             # "rate": self.lr_scheduler.get_last_lr()[-1]}
-        logger.info("5")
+    
         return {"loss": loss, "log": tensorboard_logs}
 
     def load_dataset(self, mode, batch_size):
