@@ -116,8 +116,6 @@ class BaseTransformer(pl.LightningModule):
         optimizer.zero_grad()
         # logger.info("lr step %s", self.lr_scheduler.get_last_lr()[-1])
         self.lr_scheduler.step()
-        import torch_xla.debug.metrics as met
-        print(met.metrics_report())
 
     def get_tqdm_dict(self):
         tqdm_dict = {"loss": "{:.3f}".format(self.trainer.avg_loss), "lr": self.lr_scheduler.get_last_lr()[-1]}
