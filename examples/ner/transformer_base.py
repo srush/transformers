@@ -127,14 +127,15 @@ class BaseTransformer(pl.LightningModule):
         return self.validation_end(outputs)
 
     def train_dataloader(self):
-        train_batch_size = self.hparams.train_batch_size * max(1, self.hparams.n_gpu,
-                                                               self.hparams.n_tpu_cores)
+        train_batch_size = self.hparams.train_batch_size
         dataloader = self.load_dataset("train", train_batch_size)
+
         t_total = (
-            len(dataloader.dataset)
+            (len(dataloader.dataset) // (train_batch_size  * max(1, self.hparams.n_gpu)))
             // self.hparams.gradient_accumulation_steps
             * float(self.hparams.num_train_epochs)
         )
+        logger.info("steps %s %s", len(dataloader.dataset), t_total)
         scheduler = get_linear_schedule_with_warmup(
             self.opt,
             num_warmup_steps=self.hparams.warmup_steps,
