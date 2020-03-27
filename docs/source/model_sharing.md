@@ -1,4 +1,4 @@
-# Model upload and sharing
+# Model Sharing
 
 Starting with `v2.2.2`, you can now upload and share your fine-tuned models with the community, using the <abbr title="Command-line interface">CLI</abbr> that's built-in to the library.
 

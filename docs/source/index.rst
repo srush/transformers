@@ -55,11 +55,9 @@ The library currently contains PyTorch and Tensorflow implementations, pre-train
 
 .. toctree::
     :maxdepth: 2
-    :caption: Notes
+    :caption: Guide
 
-    installation
     quickstart
-    glossary
     pretrained_models
     usage
     model_sharing
@@ -67,15 +65,13 @@ The library currently contains PyTorch and Tensorflow implementations, pre-train
     notebooks
     serialization
     converting_tensorflow_models
-    migration
-    bertology
     torchscript
     multilingual
     benchmarks
 
 .. toctree::
     :maxdepth: 2
-    :caption: Main classes
+    :caption: Core Classes
 
     main_classes/configuration
     main_classes/model
@@ -86,7 +82,16 @@ The library currently contains PyTorch and Tensorflow implementations, pre-train
 
 .. toctree::
     :maxdepth: 2
-    :caption: Package Reference
+    :caption: Features
+
+    migration
+    glossary
+    bertology
+    installation
+    
+.. toctree::
+    :maxdepth: 2
+    :caption: Models
 
     model_doc/auto
     model_doc/bert
@@ -104,3 +109,4 @@ The library currently contains PyTorch and Tensorflow implementations, pre-train
     model_doc/flaubert
     model_doc/bart
     model_doc/t5
+
