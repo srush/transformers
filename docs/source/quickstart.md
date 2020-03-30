@@ -115,7 +115,7 @@ For more advanced usage skip ahead to
 * Model Sharing
 
 
-### Text Generation
+## Text Generation
 
 This section demonstrates how to use transformers for text
 generation. We focus on langauge modeling, i.e.  predicting the next
