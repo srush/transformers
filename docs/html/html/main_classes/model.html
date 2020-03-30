@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Models &mdash; transformers 2.6.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/huggingface.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/code-snippets.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tokenizer" href="tokenizer.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> transformers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained_models.html">Pretrained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_sharing.html">Model Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html">Loading Google AI or OpenAI pre-trained weights or PyTorch dump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html#serialization-best-practices">Serialization best-practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converting_tensorflow_models.html">Converting Tensorflow Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torchscript.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilingual.html">Multi-lingual models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Classes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pretrainedmodel"><code class="docutils literal notranslate"><span class="pre">PreTrainedModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tfpretrainedmodel"><code class="docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizer_schedules.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizer_schedules.html#schedules">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizer_schedules.html#gradient-strategies">Gradient Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processors.html">Processors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Migrating from pytorch-pretrained-bert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bertology.html">BERTology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/auto.html">AutoModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/gpt.html">OpenAI GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/transformerxl.html">Transformer XL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/gpt2.html">OpenAI GPT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlm.html">XLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlnet.html">XLNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/roberta.html">RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/distilbert.html">DistilBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/camembert.html">CamemBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/albert.html">ALBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlmroberta.html">XLM-RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/flaubert.html">FlauBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/bart.html">Bart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/t5.html">T5</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">transformers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/main_classes/model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
+<p>The base class <code class="docutils literal notranslate"><span class="pre">PreTrainedModel</span></code> implements the common methods for loading/saving a model either from a local file or directory, or from a pretrained model configuration provided by the library (downloaded from HuggingFace’s AWS S3 repository).</p>
+<p><code class="docutils literal notranslate"><span class="pre">PreTrainedModel</span></code> also implements a few methods which are common among all the models to:</p>
+<ul class="simple">
+<li>resize the input token embeddings when new tokens are added to the vocabulary</li>
+<li>prune the attention heads of the model.</li>
+</ul>
+<div class="section" id="pretrainedmodel">
+<h2><code class="docutils literal notranslate"><span class="pre">PreTrainedModel</span></code><a class="headerlink" href="#pretrainedmodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.PreTrainedModel">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">PreTrainedModel</code><span class="sig-paren">(</span><em>config</em>, <em>*inputs</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all models.</p>
+<p><a class="reference internal" href="#transformers.PreTrainedModel" title="transformers.PreTrainedModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreTrainedModel</span></code></a> takes care of storing the configuration of the models and handles methods for loading/downloading/saving models
+as well as a few methods common to all models to (i) resize the input embeddings and (ii) prune heads in the self-attention heads.</p>
+<dl class="docutils">
+<dt>Class attributes (overridden by derived classes):</dt>
+<dd><ul class="first last">
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">config_class</span></code>: a class derived from <a class="reference internal" href="configuration.html#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a> to use as configuration class for this model architecture.</p>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">pretrained_model_archive_map</span></code>: a python <code class="docutils literal notranslate"><span class="pre">dict</span></code> of with <cite>short-cut-names</cite> (string) as keys and <cite>url</cite> (string) of associated pretrained weights as values.</p>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">load_tf_weights</span></code>: a python <code class="docutils literal notranslate"><span class="pre">method</span></code> for loading a TensorFlow checkpoint in a PyTorch model, taking as arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">model</span></code>: an instance of the relevant subclass of <a class="reference internal" href="#transformers.PreTrainedModel" title="transformers.PreTrainedModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreTrainedModel</span></code></a>,</li>
+<li><code class="docutils literal notranslate"><span class="pre">config</span></code>: an instance of the relevant subclass of <a class="reference internal" href="configuration.html#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a>,</li>
+<li><code class="docutils literal notranslate"><span class="pre">path</span></code>: a path (string) to the TensorFlow checkpoint.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">base_model_prefix</span></code>: a string indicating the attribute associated to the base model in derived classes of the same architecture adding modules on top of the base model.</p>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="transformers.PreTrainedModel.dummy_inputs">
+<code class="descname">dummy_inputs</code><a class="headerlink" href="#transformers.PreTrainedModel.dummy_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dummy inputs to do a forward pass in the network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">torch.Tensor with dummy inputs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.enforce_repetition_penalty_">
+<code class="descname">enforce_repetition_penalty_</code><span class="sig-paren">(</span><em>lprobs</em>, <em>batch_size</em>, <em>num_beams</em>, <em>prev_output_tokens</em>, <em>repetition_penalty</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.enforce_repetition_penalty_"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.enforce_repetition_penalty_" title="Permalink to this definition">¶</a></dt>
+<dd><p>repetition penalty (from CTRL paper <a class="reference external" href="https://arxiv.org/abs/1909.05858">https://arxiv.org/abs/1909.05858</a>).</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="transformers.PreTrainedModel.from_pretrained">
+<em class="property">classmethod </em><code class="descname">from_pretrained</code><span class="sig-paren">(</span><em>pretrained_model_name_or_path</em>, <em>*model_args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.from_pretrained"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.from_pretrained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a pretrained pytorch model from a pre-trained model configuration.</p>
+<p>The model is set in evaluation mode by default using <code class="docutils literal notranslate"><span class="pre">model.eval()</span></code> (Dropout modules are deactivated)
+To train the model, you should first set it back in training mode with <code class="docutils literal notranslate"><span class="pre">model.train()</span></code></p>
+<p>The warning <code class="docutils literal notranslate"><span class="pre">Weights</span> <span class="pre">from</span> <span class="pre">XXX</span> <span class="pre">not</span> <span class="pre">initialized</span> <span class="pre">from</span> <span class="pre">pretrained</span> <span class="pre">model</span></code> means that the weights of XXX do not come pre-trained with the rest of the model.
+It is up to you to train those weights with a downstream fine-tuning task.</p>
+<p>The warning <code class="docutils literal notranslate"><span class="pre">Weights</span> <span class="pre">from</span> <span class="pre">XXX</span> <span class="pre">not</span> <span class="pre">used</span> <span class="pre">in</span> <span class="pre">YYY</span></code> means that the layer XXX is not used by YYY, therefore those weights are discarded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pretrained_model_name_or_path</strong> – either:
+- a string with the <cite>shortcut name</cite> of a pre-trained model to load from cache or download, e.g.: <code class="docutils literal notranslate"><span class="pre">bert-base-uncased</span></code>.
+- a string with the <cite>identifier name</cite> of a pre-trained model that was user-uploaded to our S3, e.g.: <code class="docutils literal notranslate"><span class="pre">dbmdz/bert-base-german-cased</span></code>.
+- a path to a <cite>directory</cite> containing model weights saved using <a class="reference internal" href="#transformers.PreTrainedModel.save_pretrained" title="transformers.PreTrainedModel.save_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">save_pretrained()</span></code></a>, e.g.: <code class="docutils literal notranslate"><span class="pre">./my_model_directory/</span></code>.
+- a path or url to a <cite>tensorflow index checkpoint file</cite> (e.g. <cite>./tf_model/model.ckpt.index</cite>). In this case, <code class="docutils literal notranslate"><span class="pre">from_tf</span></code> should be set to True and a configuration object should be provided as <code class="docutils literal notranslate"><span class="pre">config</span></code> argument. This loading path is slower than converting the TensorFlow checkpoint in a PyTorch model using the provided conversion scripts and loading the PyTorch model afterwards.
+- None if you are both providing the configuration and state dictionary (resp. with keyword arguments <code class="docutils literal notranslate"><span class="pre">config</span></code> and <code class="docutils literal notranslate"><span class="pre">state_dict</span></code>)</li>
+<li><strong>model_args</strong> – (<cite>optional</cite>) Sequence of positional arguments:
+All remaning positional arguments will be passed to the underlying model’s <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method</li>
+<li><strong>config</strong> – <p>(<cite>optional</cite>) one of:
+- an instance of a class derived from <a class="reference internal" href="configuration.html#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a>, or
+- a string valid as input to <a class="reference internal" href="configuration.html#transformers.PretrainedConfig.from_pretrained" title="transformers.PretrainedConfig.from_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a>
+Configuration for the model to use instead of an automatically loaded configuation. Configuration can be automatically loaded when:</p>
+<blockquote>
+<div><ul>
+<li>the model is a model provided by the library (loaded with the <code class="docutils literal notranslate"><span class="pre">shortcut-name</span></code> string of a pretrained model), or</li>
+<li>the model was saved using <a class="reference internal" href="#transformers.PreTrainedModel.save_pretrained" title="transformers.PreTrainedModel.save_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">save_pretrained()</span></code></a> and is reloaded by suppling the save directory.</li>
+<li>the model is loaded by suppling a local directory as <code class="docutils literal notranslate"><span class="pre">pretrained_model_name_or_path</span></code> and a configuration JSON file named <cite>config.json</cite> is found in the directory.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>state_dict</strong> – (<cite>optional</cite>) dict:
+an optional state dictionnary for the model to use instead of a state dictionary loaded from saved weights file.
+This option can be used if you want to create a model from a pretrained configuration but load your own weights.
+In this case though, you should check if using <a class="reference internal" href="#transformers.PreTrainedModel.save_pretrained" title="transformers.PreTrainedModel.save_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">save_pretrained()</span></code></a> and <a class="reference internal" href="#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> is not a simpler option.</li>
+<li><strong>cache_dir</strong> – (<cite>optional</cite>) string:
+Path to a directory in which a downloaded pre-trained model
+configuration should be cached if the standard cache should not be used.</li>
+<li><strong>force_download</strong> – (<cite>optional</cite>) boolean, default False:
+Force to (re-)download the model weights and configuration files and override the cached versions if they exists.</li>
+<li><strong>resume_download</strong> – (<cite>optional</cite>) boolean, default False:
+Do not delete incompletely recieved file. Attempt to resume the download if such a file exists.</li>
+<li><strong>proxies</strong> – (<cite>optional</cite>) dict, default None:
+A dictionary of proxy servers to use by protocol or endpoint, e.g.: {‘http’: ‘foo.bar:3128’, ‘http://hostname’: ‘foo.bar:4012’}.
+The proxies are used on each request.</li>
+<li><strong>output_loading_info</strong> – (<cite>optional</cite>) boolean:
+Set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to also return a dictionnary containing missing keys, unexpected keys and error messages.</li>
+<li><strong>kwargs</strong> – <p>(<cite>optional</cite>) Remaining dictionary of keyword arguments:
+Can be used to update the configuration object (after it being loaded) and initiate the model. (e.g. <code class="docutils literal notranslate"><span class="pre">output_attention=True</span></code>). Behave differently depending on whether a <cite>config</cite> is provided or automatically loaded:</p>
+<ul>
+<li>If a configuration is provided with <code class="docutils literal notranslate"><span class="pre">config</span></code>, <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> will be directly passed to the underlying model’s <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method (we assume all relevant updates to the configuration have already been done)</li>
+<li>If a configuration is not provided, <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> will be first passed to the configuration class initialization function (<a class="reference internal" href="configuration.html#transformers.PretrainedConfig.from_pretrained" title="transformers.PretrainedConfig.from_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a>). Each key of <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> that corresponds to a configuration attribute will be used to override said attribute with the supplied <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> value. Remaining keys that do not correspond to any configuration attribute will be passed to the underlying model’s <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function.</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># For example purposes. Not runnable.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BertModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BertModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;./test/saved_model/&#39;</span><span class="p">)</span>  <span class="c1"># E.g. model was saved using `save_pretrained(&#39;./test/saved_model/&#39;)`</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BertModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Update configuration during loading</span>
+<span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="kc">True</span>
+<span class="c1"># Loading from a TF checkpoint file instead of a PyTorch model (slower)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">BertConfig</span><span class="o">.</span><span class="n">from_json_file</span><span class="p">(</span><span class="s1">&#39;./tf_model/my_tf_model_config.json&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BertModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;./tf_model/my_tf_checkpoint.ckpt.index&#39;</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>max_length=None</em>, <em>min_length=None</em>, <em>do_sample=None</em>, <em>early_stopping=None</em>, <em>num_beams=None</em>, <em>temperature=None</em>, <em>top_k=None</em>, <em>top_p=None</em>, <em>repetition_penalty=None</em>, <em>bos_token_id=None</em>, <em>pad_token_id=None</em>, <em>eos_token_id=None</em>, <em>length_penalty=None</em>, <em>no_repeat_ngram_size=None</em>, <em>num_return_sequences=None</em>, <em>attention_mask=None</em>, <em>decoder_start_token_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.generate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates sequences for models with a LM head. The method currently supports greedy decoding, beam-search decoding, sampling with temperature, sampling with top-k or nucleus sampling.</p>
+<p>Adapted in part from <a class="reference external" href="https://github.com/facebookresearch/XLM/blob/9e6f6814d17be4fe5b15f2e6c43eb2b2d76daeb4/src/model/transformer.py#L529">Facebook’s XLM beam search code</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> – (<cite>optional</cite>) <cite>torch.LongTensor</cite> of shape <cite>(batch_size, sequence_length)</cite>
+The sequence used as a prompt for the generation. If <cite>None</cite> the method initializes
+it as an empty <cite>torch.LongTensor</cite> of shape <cite>(1,)</cite>.</li>
+<li><strong>max_length</strong> – (<cite>optional</cite>) int
+The max length of the sequence to be generated.  Between <cite>min_length</cite> and infinity. Default to 20.</li>
+<li><strong>min_length</strong> – (<cite>optional</cite>) int
+The min length of the sequence to be generated.  Between 0 and infinity. Default to 0.</li>
+<li><strong>do_sample</strong> – (<cite>optional</cite>) bool
+If set to <cite>False</cite> greedy decoding is used. Otherwise sampling is used. Defaults to <cite>False</cite> as defined in <cite>configuration_utils.PretrainedConfig</cite>.</li>
+<li><strong>early_stopping</strong> – (<cite>optional</cite>) bool
+if set to <cite>True</cite> beam search is stopped when at least <cite>num_beams</cite> sentences finished per batch. Defaults to <cite>False</cite> as defined in <cite>configuration_utils.PretrainedConfig</cite>.</li>
+<li><strong>num_beams</strong> – (<cite>optional</cite>) int
+Number of beams for beam search. Must be between 1 and infinity. 1 means no beam search. Default to 1.</li>
+<li><strong>temperature</strong> – (<cite>optional</cite>) float
+The value used to module the next token probabilities. Must be strictly positive. Default to 1.0.</li>
+<li><strong>top_k</strong> – (<cite>optional</cite>) int
+The number of highest probability vocabulary tokens to keep for top-k-filtering. Between 1 and infinity. Default to 50.</li>
+<li><strong>top_p</strong> – (<cite>optional</cite>) float
+The cumulative probability of parameter highest probability vocabulary tokens to keep for nucleus sampling. Must be between 0 and 1. Default to 1.</li>
+<li><strong>repetition_penalty</strong> – (<cite>optional</cite>) float
+The parameter for repetition penalty. Between 1.0 and infinity. 1.0 means no penalty. Default to 1.0.</li>
+<li><strong>pad_token_id</strong> – (<cite>optional</cite>) int
+Padding token. Default to specicic model pad_token_id or None if it does not exist.</li>
+<li><strong>bos_token_id</strong> – (<cite>optional</cite>) int
+BOS token. Defaults to bos_token_id as defined in the models config.</li>
+<li><strong>pad_token_id</strong> – (<cite>optional</cite>) int
+Pad token. Defaults to pad_token_id as defined in the models config.</li>
+<li><strong>eos_token_ids</strong> – (<cite>optional</cite>) int or list of int
+End of sequence token or list of tokens to stop the generation. Default to eos_token_ids as defined in the models config.</li>
+<li><strong>length_penalty</strong> – (<cite>optional</cite>) float
+Exponential penalty to the length. Default to 1.</li>
+<li><strong>no_repeat_ngram_size</strong> – (<cite>optional</cite>) int
+If set to int &gt; 0, all ngrams of size <cite>no_repeat_ngram_size</cite> can only occur once.</li>
+<li><strong>num_return_sequences</strong> – (<cite>optional</cite>) int
+The number of independently computed returned sequences for each element in the batch. Default to 1.</li>
+<li><strong>attention_mask</strong> (<cite>optional</cite>) – <cite>torch.LongTensor</cite> of same shape as <cite>input_ids</cite>
+Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.
+Defaults to <cite>None</cite>.</li>
+<li><strong>are attention masks?</strong> (<em>What</em>) – </li>
+<li><strong>decoder_start_token_id=None</strong> – (<cite>optional</cite>) int
+If an encoder-decoder model starts decoding with a different token than BOS.
+Defaults to <cite>None</cite> and is changed to <cite>BOS</cite> later.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt><cite>torch.LongTensor</cite> of shape <cite>(batch_size * num_return_sequences, sequence_length)</cite></dt>
+<dd><p class="first last">sequence_length is either equal to max_length or shorter if all batches finished early due to the <cite>eos_token_id</cite></p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">output</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>  <span class="c1"># do greedy decoding</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;openai-gpt&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;openai-gpt&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">input_context</span> <span class="o">=</span> <span class="s1">&#39;The dog&#39;</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">input_context</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>  <span class="c1"># encode input context</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>  <span class="c1"># generate 3 independent sequences using beam search decoding (5 beams) with sampling from initial context &#39;The dog&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="c1">#  3 output sequences were generated</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">input_context</span> <span class="o">=</span> <span class="s1">&#39;The dog&#39;</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">input_context</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>  <span class="c1"># encode input context</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3 generate sequences using by sampling</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="c1">#  3 output sequences were generated</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">input_context</span> <span class="o">=</span> <span class="s1">&#39;Legal My neighbor is&#39;</span>  <span class="c1"># &quot;Legal&quot; is one of the control codes for ctrl</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">input_context</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>  <span class="c1"># encode input context</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">repetition_penalty</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>  <span class="c1"># generate sequences</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.get_input_embeddings">
+<code class="descname">get_input_embeddings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.get_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.get_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s input embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A torch module mapping vocabulary to hidden states.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.get_output_embeddings">
+<code class="descname">get_output_embeddings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.get_output_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.get_output_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s output embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A torch module mapping hidden states to vocabulary.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.init_weights">
+<code class="descname">init_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.init_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.init_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize and prunes weights if needed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.prune_heads">
+<code class="descname">prune_heads</code><span class="sig-paren">(</span><em>heads_to_prune</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.prune_heads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.prune_heads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prunes heads of the base model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>heads_to_prune</strong> – dict with keys being selected layer indices (<cite>int</cite>) and associated values being the list of heads to prune in said layer (list of <cite>int</cite>).</li>
+<li><strong>{1</strong> (<em>E.g.</em>) – [0, 2], 2: [2, 3]} will prune heads 0 and 2 on layer 1 and heads 2 and 3 on layer 2.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.resize_token_embeddings">
+<code class="descname">resize_token_embeddings</code><span class="sig-paren">(</span><em>new_num_tokens=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.resize_token_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.resize_token_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize input token embeddings matrix of the model if new_num_tokens != config.vocab_size.
+Take care of tying weights embeddings afterwards if the model class has a <cite>tie_weights()</cite> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>new_num_tokens</strong> – (<cite>optional</cite>) int:
+New number of tokens in the embedding matrix. Increasing the size will add newly initialized vectors at the end. Reducing the size will remove vectors from the end.
+If not provided or None: does nothing and just returns a pointer to the input tokens <code class="docutils literal notranslate"><span class="pre">torch.nn.Embeddings</span></code> Module of the model.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Return: <code class="docutils literal notranslate"><span class="pre">torch.nn.Embeddings</span></code></dt>
+<dd>Pointer to the input tokens Embeddings Module of the model</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.save_pretrained">
+<code class="descname">save_pretrained</code><span class="sig-paren">(</span><em>save_directory</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.save_pretrained"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.save_pretrained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a model and its configuration file to a directory, so that it
+can be re-loaded using the <cite>:func:`~transformers.PreTrainedModel.from_pretrained`</cite> class method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.set_input_embeddings">
+<code class="descname">set_input_embeddings</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.set_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.set_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model’s input embeddings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code>) – A module mapping vocabulary to hidden states.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PreTrainedModel.tie_weights">
+<code class="descname">tie_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_utils.html#PreTrainedModel.tie_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PreTrainedModel.tie_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tie the weights between the input embeddings and the output embeddings.
+If the <cite>torchscript</cite> flag is set in the configuration, can’t handle parameter sharing so we are cloning
+the weights instead.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="tfpretrainedmodel">
+<h2><code class="docutils literal notranslate"><span class="pre">TFPreTrainedModel</span></code><a class="headerlink" href="#tfpretrainedmodel" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tokenizer.html" class="btn btn-neutral float-right" title="Tokenizer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, huggingface
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

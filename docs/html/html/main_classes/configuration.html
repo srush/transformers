@@ -1,0 +1,511 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; transformers 2.6.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/huggingface.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/code-snippets.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Models" href="model.html" />
+    <link rel="prev" title="Benchmarks" href="../benchmarks.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> transformers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained_models.html">Pretrained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_sharing.html">Model Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html">Loading Google AI or OpenAI pre-trained weights or PyTorch dump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html#serialization-best-practices">Serialization best-practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converting_tensorflow_models.html">Converting Tensorflow Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torchscript.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilingual.html">Multi-lingual models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Classes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pretrainedconfig"><code class="docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizer_schedules.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizer_schedules.html#schedules">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimizer_schedules.html#gradient-strategies">Gradient Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="processors.html">Processors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Migrating from pytorch-pretrained-bert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bertology.html">BERTology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/auto.html">AutoModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/gpt.html">OpenAI GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/transformerxl.html">Transformer XL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/gpt2.html">OpenAI GPT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlm.html">XLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlnet.html">XLNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/roberta.html">RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/distilbert.html">DistilBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/camembert.html">CamemBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/albert.html">ALBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlmroberta.html">XLM-RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/flaubert.html">FlauBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/bart.html">Bart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/t5.html">T5</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">transformers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/main_classes/configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>The base class <code class="docutils literal notranslate"><span class="pre">PretrainedConfig</span></code> implements the common methods for loading/saving a configuration either from a local file or directory, or from a pretrained model configuration provided by the library (downloaded from HuggingFace’s AWS S3 repository).</p>
+<div class="section" id="pretrainedconfig">
+<h2><code class="docutils literal notranslate"><span class="pre">PretrainedConfig</span></code><a class="headerlink" href="#pretrainedconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.PretrainedConfig">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">PretrainedConfig</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for all configuration classes.
+Handles a few parameters common to all models’ configurations as well as methods for loading/downloading/saving configurations.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A configuration file can be loaded and saved to disk. Loading the configuration file and using this file to initialize a model does <strong>not</strong> load the model weights.
+It only affects the model’s configuration.</p>
+</div>
+<dl class="docutils">
+<dt>Class attributes (overridden by derived classes):</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pretrained_config_archive_map</span></code>: a python <code class="docutils literal notranslate"><span class="pre">dict</span></code> with <cite>shortcut names</cite> (string) as keys and <cite>url</cite> (string) of associated pretrained model configurations as values.</li>
+<li><code class="docutils literal notranslate"><span class="pre">model_type</span></code>: a string that identifies the model type, that we serialize into the JSON file, and that we use to recreate the correct object in <a class="reference internal" href="../model_doc/auto.html#transformers.AutoConfig" title="transformers.AutoConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoConfig</span></code></a>.</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>finetuning_task</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Name of the task used to fine-tune the model. This can be used when converting from an original (TensorFlow or PyTorch) checkpoint.</li>
+<li><strong>num_labels</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, <cite>optional</cite>, defaults to <cite>2</cite>) – Number of classes to use when the model is a classification model (sequences/tokens)</li>
+<li><strong>output_attentions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Should the model returns attentions weights.</li>
+<li><strong>output_hidden_states</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Should the model returns all hidden-states.</li>
+<li><strong>torchscript</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Is the model used with Torchscript (for PyTorch models).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="transformers.PretrainedConfig.from_dict">
+<em class="property">classmethod </em><code class="descname">from_dict</code><span class="sig-paren">(</span><em>config_dict: Dict</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; transformers.configuration_utils.PretrainedConfig<a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.from_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a <cite>Config</cite> from a Python dictionary of parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>config_dict</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">any]</span></code>) – Dictionary that will be used to instantiate the configuration object. Such a dictionary can be retrieved
+from a pre-trained checkpoint by leveraging the <a class="reference internal" href="#transformers.PretrainedConfig.get_config_dict" title="transformers.PretrainedConfig.get_config_dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_config_dict()</span></code></a>
+method.</li>
+<li><strong>kwargs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">any]</span></code>) – Additional parameters from which to initialize the configuration object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instance of a configuration object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="transformers.PretrainedConfig.from_json_file">
+<em class="property">classmethod </em><code class="descname">from_json_file</code><span class="sig-paren">(</span><em>json_file: str</em><span class="sig-paren">)</span> &#x2192; transformers.configuration_utils.PretrainedConfig<a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.from_json_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.from_json_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a <cite>Config</cite> from the path to a json file of parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>json_file</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – Path to the JSON file containing the parameters.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An instance of a configuration object</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="transformers.PretrainedConfig.from_pretrained">
+<em class="property">classmethod </em><code class="descname">from_pretrained</code><span class="sig-paren">(</span><em>pretrained_model_name_or_path</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; transformers.configuration_utils.PretrainedConfig<a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.from_pretrained"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.from_pretrained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate a <a class="reference internal" href="#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a> (or a derived class) from a pre-trained model configuration.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pretrained_model_name_or_path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – <dl class="docutils">
+<dt>either:</dt>
+<dd><ul class="first last">
+<li>a string with the <cite>shortcut name</cite> of a pre-trained model configuration to load from cache or
+download, e.g.: <code class="docutils literal notranslate"><span class="pre">bert-base-uncased</span></code>.</li>
+<li>a string with the <cite>identifier name</cite> of a pre-trained model configuration that was user-uploaded to
+our S3, e.g.: <code class="docutils literal notranslate"><span class="pre">dbmdz/bert-base-german-cased</span></code>.</li>
+<li>a path to a <cite>directory</cite> containing a configuration file saved using the
+<a class="reference internal" href="#transformers.PretrainedConfig.save_pretrained" title="transformers.PretrainedConfig.save_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">save_pretrained()</span></code></a> method, e.g.: <code class="docutils literal notranslate"><span class="pre">./my_model_directory/</span></code>.</li>
+<li>a path or url to a saved configuration JSON <cite>file</cite>, e.g.:
+<code class="docutils literal notranslate"><span class="pre">./my_model_directory/configuration.json</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><strong>cache_dir</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>) – Path to a directory in which a downloaded pre-trained model
+configuration should be cached if the standard cache should not be used.</li>
+<li><strong>kwargs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">any]</span></code>, <cite>optional</cite>) – The values in kwargs of any keys which are configuration attributes will be used to override the loaded
+values. Behavior concerning key/value pairs whose keys are <em>not</em> configuration attributes is
+controlled by the <cite>return_unused_kwargs</cite> keyword parameter.</li>
+<li><strong>force_download</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Force to (re-)download the model weights and configuration files and override the cached versions if they exist.</li>
+<li><strong>resume_download</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Do not delete incompletely recieved file. Attempt to resume the download if such a file exists.</li>
+<li><strong>proxies</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict</span></code>, <cite>optional</cite>) – A dictionary of proxy servers to use by protocol or endpoint, e.g.:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">{'http':</span> <span class="pre">'foo.bar:3128',</span> <span class="pre">'http://hostname':</span> <span class="pre">'foo.bar:4012'}.</span></code>
+The proxies are used on each request.</li>
+<li><strong>return_unused_kwargs</strong> – (<cite>optional</cite>) bool:
+If False, then this function returns just the final configuration object.
+If True, then this functions returns a <code class="xref py py-obj docutils literal notranslate"><span class="pre">Tuple(config,</span> <span class="pre">unused_kwargs)</span></code> where <cite>unused_kwargs</cite> is a
+dictionary consisting of the key/value pairs whose keys are not configuration attributes: ie the part
+of kwargs which has not been used to update <cite>config</cite> and is otherwise ignored.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An instance of a configuration object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can&#39;t instantiate directly the base class `PretrainedConfig` so let&#39;s show the examples on a</span>
+<span class="c1"># derived class: BertConfig</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">)</span>    <span class="c1"># Download configuration from S3 and cache.</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;./test/saved_model/&#39;</span><span class="p">)</span>  <span class="c1"># E.g. config (or model) was saved using `save_pretrained(&#39;./test/saved_model/&#39;)`</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;./test/saved_model/my_configuration.json&#39;</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="kc">True</span>
+<span class="n">config</span><span class="p">,</span> <span class="n">unused_kwargs</span> <span class="o">=</span> <span class="n">BertConfig</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                   <span class="n">foo</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_unused_kwargs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">unused_kwargs</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="transformers.PretrainedConfig.get_config_dict">
+<em class="property">classmethod </em><code class="descname">get_config_dict</code><span class="sig-paren">(</span><em>pretrained_model_name_or_path: str</em>, <em>pretrained_config_archive_map: Optional[Dict] = None</em>, <em>**kwargs</em><span class="sig-paren">)</span> &#x2192; Tuple[Dict, Dict]<a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.get_config_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.get_config_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>From a <cite>pretrained_model_name_or_path</cite>, resolve to a dictionary of parameters, to be used
+for instantiating a Config using <cite>from_dict</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pretrained_model_name_or_path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – The identifier of the pre-trained checkpoint from which we want the dictionary of parameters.</li>
+<li><strong>pretrained_config_archive_map</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code>, <cite>optional</cite>) Dict:
+A map of <cite>shortcut names</cite> to <cite>url</cite>. By default, will use the current class attribute.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The dictionary that will be used to instantiate the configuration object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tuple[Dict,</span> <span class="pre">Dict]</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PretrainedConfig.save_pretrained">
+<code class="descname">save_pretrained</code><span class="sig-paren">(</span><em>save_directory</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.save_pretrained"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.save_pretrained" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a configuration object to the directory <cite>save_directory</cite>, so that it
+can be re-loaded using the <a class="reference internal" href="#transformers.PretrainedConfig.from_pretrained" title="transformers.PretrainedConfig.from_pretrained"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> class method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>save_directory</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – Directory where the configuration JSON file will be saved.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PretrainedConfig.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.to_dict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes this instance to a Python dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary of all the attributes that make up this configuration instance,</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">any]</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PretrainedConfig.to_json_file">
+<code class="descname">to_json_file</code><span class="sig-paren">(</span><em>json_file_path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.to_json_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.to_json_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save this instance to a json file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>json_file_path</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – Path to the JSON file in which this configuration instance’s parameters will be saved.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PretrainedConfig.to_json_string">
+<code class="descname">to_json_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.to_json_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.to_json_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serializes this instance to a JSON string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">String containing all the attributes that make up this configuration instance in JSON format.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.PretrainedConfig.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>config_dict: Dict</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_utils.html#PretrainedConfig.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.PretrainedConfig.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates attributes of this class
+with attributes from <cite>config_dict</cite>.</p>
+<p>:param <code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">any]</span></code>: Dictionary of attributes that shall be updated for this class.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="model.html" class="btn btn-neutral float-right" title="Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../benchmarks.html" class="btn btn-neutral" title="Benchmarks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, huggingface
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

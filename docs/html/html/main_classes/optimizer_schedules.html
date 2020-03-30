@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Optimizer &mdash; transformers 2.6.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/huggingface.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/code-snippets.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Processors" href="processors.html" />
+    <link rel="prev" title="Pipelines" href="pipelines.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> transformers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained_models.html">Pretrained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_sharing.html">Model Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html">Loading Google AI or OpenAI pre-trained weights or PyTorch dump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html#serialization-best-practices">Serialization best-practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converting_tensorflow_models.html">Converting Tensorflow Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torchscript.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilingual.html">Multi-lingual models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Classes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Pipelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Optimizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adamw"><code class="docutils literal notranslate"><span class="pre">AdamW</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adamweightdecay"><code class="docutils literal notranslate"><span class="pre">AdamWeightDecay</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#schedules">Schedules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#learning-rate-schedules">Learning Rate Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#warmup"><code class="docutils literal notranslate"><span class="pre">Warmup</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#gradient-strategies">Gradient Strategies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gradientaccumulator"><code class="docutils literal notranslate"><span class="pre">GradientAccumulator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="processors.html">Processors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Migrating from pytorch-pretrained-bert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bertology.html">BERTology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/auto.html">AutoModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/gpt.html">OpenAI GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/transformerxl.html">Transformer XL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/gpt2.html">OpenAI GPT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlm.html">XLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlnet.html">XLNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/roberta.html">RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/distilbert.html">DistilBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/camembert.html">CamemBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/albert.html">ALBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/xlmroberta.html">XLM-RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/flaubert.html">FlauBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/bart.html">Bart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_doc/t5.html">T5</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">transformers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Optimizer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/main_classes/optimizer_schedules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="optimizer">
+<h1>Optimizer<a class="headerlink" href="#optimizer" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">.optimization</span></code> module provides:</p>
+<ul class="simple">
+<li>an optimizer with weight decay fixed that can be used to fine-tuned models, and</li>
+<li>several schedules in the form of schedule objects that inherit from <code class="docutils literal notranslate"><span class="pre">_LRSchedule</span></code>:</li>
+<li>a gradient accumulation class to accumulate the gradients of multiple batches</li>
+</ul>
+<div class="section" id="adamw">
+<h2><code class="docutils literal notranslate"><span class="pre">AdamW</span></code><a class="headerlink" href="#adamw" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.AdamW">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">AdamW</code><span class="sig-paren">(</span><em>params</em>, <em>lr=0.001</em>, <em>betas=(0.9</em>, <em>0.999)</em>, <em>eps=1e-06</em>, <em>weight_decay=0.0</em>, <em>correct_bias=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/optimization.html#AdamW"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.AdamW" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements Adam algorithm with weight decay fix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>lr</strong> (<em>float</em>) – learning rate. Default 1e-3.</li>
+<li><strong>betas</strong> (<em>tuple of 2 floats</em>) – Adams beta parameters (b1, b2). Default: (0.9, 0.999)</li>
+<li><strong>eps</strong> (<em>float</em>) – Adams epsilon. Default: 1e-6</li>
+<li><strong>weight_decay</strong> (<em>float</em>) – Weight decay. Default: 0.0</li>
+<li><strong>correct_bias</strong> (<em>bool</em>) – can be set to False to avoid correcting bias in Adam (e.g. like in Bert TF repository). Default True.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.AdamW.step">
+<code class="descname">step</code><span class="sig-paren">(</span><em>closure=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/optimization.html#AdamW.step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.AdamW.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a single optimization step.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>closure</strong> (<em>callable</em><em>, </em><em>optional</em>) – A closure that reevaluates the model
+and returns the loss.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="adamweightdecay">
+<h2><code class="docutils literal notranslate"><span class="pre">AdamWeightDecay</span></code><a class="headerlink" href="#adamweightdecay" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="schedules">
+<h1>Schedules<a class="headerlink" href="#schedules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="learning-rate-schedules">
+<h2>Learning Rate Schedules<a class="headerlink" href="#learning-rate-schedules" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="transformers.get_constant_schedule">
+<code class="descclassname">transformers.</code><code class="descname">get_constant_schedule</code><span class="sig-paren">(</span><em>optimizer</em>, <em>last_epoch=-1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/optimization.html#get_constant_schedule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.get_constant_schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a schedule with a constant learning rate.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="transformers.get_constant_schedule_with_warmup">
+<code class="descclassname">transformers.</code><code class="descname">get_constant_schedule_with_warmup</code><span class="sig-paren">(</span><em>optimizer</em>, <em>num_warmup_steps</em>, <em>last_epoch=-1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/optimization.html#get_constant_schedule_with_warmup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.get_constant_schedule_with_warmup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a schedule with a constant learning rate preceded by a warmup
+period during which the learning rate increases linearly between 0 and 1.</p>
+</dd></dl>
+
+<a class="reference external image-reference" href="/imgs/warmup_constant_schedule.png"><img alt="" src="../_images/warmup_constant_schedule.png" /></a>
+<dl class="function">
+<dt id="transformers.get_cosine_schedule_with_warmup">
+<code class="descclassname">transformers.</code><code class="descname">get_cosine_schedule_with_warmup</code><span class="sig-paren">(</span><em>optimizer</em>, <em>num_warmup_steps</em>, <em>num_training_steps</em>, <em>num_cycles=0.5</em>, <em>last_epoch=-1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/optimization.html#get_cosine_schedule_with_warmup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.get_cosine_schedule_with_warmup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a schedule with a learning rate that decreases following the
+values of the cosine function between 0 and <cite>pi * cycles</cite> after a warmup
+period during which it increases linearly between 0 and 1.</p>
+</dd></dl>
+
+<a class="reference external image-reference" href="/imgs/warmup_cosine_schedule.png"><img alt="" src="../_images/warmup_cosine_schedule.png" /></a>
+<dl class="function">
+<dt id="transformers.get_cosine_with_hard_restarts_schedule_with_warmup">
+<code class="descclassname">transformers.</code><code class="descname">get_cosine_with_hard_restarts_schedule_with_warmup</code><span class="sig-paren">(</span><em>optimizer</em>, <em>num_warmup_steps</em>, <em>num_training_steps</em>, <em>num_cycles=1.0</em>, <em>last_epoch=-1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/optimization.html#get_cosine_with_hard_restarts_schedule_with_warmup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.get_cosine_with_hard_restarts_schedule_with_warmup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a schedule with a learning rate that decreases following the
+values of the cosine function with several hard restarts, after a warmup
+period during which it increases linearly between 0 and 1.</p>
+</dd></dl>
+
+<a class="reference external image-reference" href="/imgs/warmup_cosine_hard_restarts_schedule.png"><img alt="" src="../_images/warmup_cosine_hard_restarts_schedule.png" /></a>
+<dl class="function">
+<dt id="transformers.get_linear_schedule_with_warmup">
+<code class="descclassname">transformers.</code><code class="descname">get_linear_schedule_with_warmup</code><span class="sig-paren">(</span><em>optimizer</em>, <em>num_warmup_steps</em>, <em>num_training_steps</em>, <em>last_epoch=-1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/optimization.html#get_linear_schedule_with_warmup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.get_linear_schedule_with_warmup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a schedule with a learning rate that decreases linearly after
+linearly increasing during a warmup period.</p>
+</dd></dl>
+
+<a class="reference external image-reference" href="/imgs/warmup_linear_schedule.png"><img alt="" src="../_images/warmup_linear_schedule.png" /></a>
+</div>
+<div class="section" id="warmup">
+<h2><code class="docutils literal notranslate"><span class="pre">Warmup</span></code><a class="headerlink" href="#warmup" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="gradient-strategies">
+<h1>Gradient Strategies<a class="headerlink" href="#gradient-strategies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gradientaccumulator">
+<h2><code class="docutils literal notranslate"><span class="pre">GradientAccumulator</span></code><a class="headerlink" href="#gradientaccumulator" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="processors.html" class="btn btn-neutral float-right" title="Processors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pipelines.html" class="btn btn-neutral" title="Pipelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, huggingface
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

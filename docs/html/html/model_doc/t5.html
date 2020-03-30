@@ -1,0 +1,731 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>T5 &mdash; transformers 2.6.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/huggingface.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/code-snippets.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Bart" href="bart.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> transformers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained_models.html">Pretrained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_sharing.html">Model Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html">Loading Google AI or OpenAI pre-trained weights or PyTorch dump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html#serialization-best-practices">Serialization best-practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converting_tensorflow_models.html">Converting Tensorflow Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torchscript.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilingual.html">Multi-lingual models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Classes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/model.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/pipelines.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html#schedules">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html#gradient-strategies">Gradient Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/processors.html">Processors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Migrating from pytorch-pretrained-bert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bertology.html">BERTology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Models</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="auto.html">AutoModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpt.html">OpenAI GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformerxl.html">Transformer XL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpt2.html">OpenAI GPT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xlm.html">XLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xlnet.html">XLNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roberta.html">RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distilbert.html">DistilBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camembert.html">CamemBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="albert.html">ALBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xlmroberta.html">XLM-RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flaubert.html">FlauBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bart.html">Bart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">T5</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#t5config">T5Config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#t5tokenizer">T5Tokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#t5model">T5Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#t5forconditionalgeneration">T5ForConditionalGeneration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tft5model">TFT5Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tft5forconditionalgeneration">TFT5ForConditionalGeneration</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">transformers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>T5</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/model_doc/t5.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="t5">
+<h1>T5<a class="headerlink" href="#t5" title="Permalink to this headline">¶</a></h1>
+<p><strong>DISCLAIMER:</strong> This model is still a work in progress, if you see something strange,
+file a <a class="reference external" href="https://github.com/huggingface/transformers/issues/new?assignees=&amp;labels=&amp;template=bug-report.md&amp;title">Github Issue</a></p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The T5 model was presented in <a class="reference external" href="https://arxiv.org/pdf/1910.10683.pdf">Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer</a> by Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu in
+Here the abstract:</p>
+<p><em>Transfer learning, where a model is first pre-trained on a data-rich task before being fine-tuned on a downstream task, has emerged as a powerful technique in natural language processing (NLP). The effectiveness of transfer learning has given rise to a diversity of approaches, methodology, and practice.
+In this paper, we explore the landscape of transfer learning techniques for NLP by introducing a unified framework that converts every language problem into a text-to-text format.
+Our systematic study compares pre-training objectives, architectures, unlabeled datasets, transfer approaches, and other factors on dozens of language understanding tasks.
+By combining the insights from our exploration with scale and our new “Colossal Clean Crawled Corpus”, we achieve state-of-the-art results on many benchmarks covering summarization, question answering, text classification, and more.
+To facilitate future work on transfer learning for NLP, we release our dataset, pre-trained models, and code.</em></p>
+<p>The Authors’ code can be found <a class="reference external" href="https://github.com/google-research/text-to-text-transfer-transformer">here</a> .</p>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>T5 is an encoder-decoder model pre-trained on a multi-task mixture of unsupervised
+and supervised tasks and which each task is cast as a sequence to sequence task.
+Therefore T5 works well on a variety of tasks out-of-the-box by prepending a different prefix to the input corresponding to each task, e.g.: for translation: <em>translate English to German: …, summarize: …</em>.
+For more information about the which prefix to use, it is easiest to look into Appendix D of the <a class="reference external" href="https://arxiv.org/pdf/1910.10683.pdf">paper</a> .</li>
+<li>For sequence to sequence generation, it is recommended to use <code class="docutils literal notranslate"><span class="pre">T5ForConditionalGeneration.generate()</span></code>. The method takes care of feeding the encoded input via cross-attention layers to the decoder and auto-regressively generating the decoder output.</li>
+<li>T5 uses relative scalar embeddings. Encoder input padding can be done on the left and on the right.</li>
+</ul>
+</div>
+<div class="section" id="t5config">
+<h2>T5Config<a class="headerlink" href="#t5config" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.T5Config">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">T5Config</code><span class="sig-paren">(</span><em>vocab_size=32128</em>, <em>n_positions=512</em>, <em>d_model=512</em>, <em>d_kv=64</em>, <em>d_ff=2048</em>, <em>num_layers=6</em>, <em>num_heads=8</em>, <em>relative_attention_num_buckets=32</em>, <em>dropout_rate=0.1</em>, <em>layer_norm_epsilon=1e-06</em>, <em>initializer_factor=1.0</em>, <em>is_encoder_decoder=True</em>, <em>pad_token_id=0</em>, <em>eos_token_id=1</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_t5.html#T5Config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5Config" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#transformers.T5Config" title="transformers.T5Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">T5Config</span></code></a> is the configuration class to store the configuration of a
+<cite>T5Model</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vocab_size_or_config_json_file</strong> – Vocabulary size of <cite>inputs_ids</cite> in <cite>T5Model</cite>.</li>
+<li><strong>hidden_size</strong> – Size of the encoder layers and the pooler layer.</li>
+<li><strong>num_hidden_layers</strong> – Number of hidden layers in the Transformer encoder.</li>
+<li><strong>num_attention_heads</strong> – Number of attention heads for each attention layer in
+the Transformer encoder.</li>
+<li><strong>intermediate_size</strong> – The size of the “intermediate” (i.e., feed-forward)
+layer in the Transformer encoder.</li>
+<li><strong>hidden_act</strong> – The non-linear activation function (function or string) in the
+encoder and pooler. If string, “gelu”, “relu”, “swish” and “gelu_new” are supported.</li>
+<li><strong>hidden_dropout_prob</strong> – The dropout probabilitiy for all fully connected
+layers in the embeddings, encoder, and pooler.</li>
+<li><strong>attention_probs_dropout_prob</strong> – The dropout ratio for the attention
+probabilities.</li>
+<li><strong>max_position_embeddings</strong> – The maximum sequence length that this model might
+ever be used with. Typically set this to something large just in case
+(e.g., 512 or 1024 or 2048).</li>
+<li><strong>type_vocab_size</strong> – The vocabulary size of the <cite>token_type_ids</cite> passed into
+<cite>T5Model</cite>.</li>
+<li><strong>initializer_factor</strong> – A factor for initializing all weight matrices (should be kept to 1.0, used for initialization testing).</li>
+<li><strong>layer_norm_eps</strong> – The epsilon used by LayerNorm.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="t5tokenizer">
+<h2>T5Tokenizer<a class="headerlink" href="#t5tokenizer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.T5Tokenizer">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">T5Tokenizer</code><span class="sig-paren">(</span><em>vocab_file</em>, <em>eos_token='&lt;/s&gt;'</em>, <em>unk_token='&lt;unk&gt;'</em>, <em>pad_token='&lt;pad&gt;'</em>, <em>extra_ids=100</em>, <em>additional_special_tokens=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/tokenization_t5.html#T5Tokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5Tokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs an XLNet tokenizer. Based on <a class="reference external" href="https://github.com/google/sentencepiece">SentencePiece</a> .</p>
+<p>This tokenizer inherits from <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer" title="transformers.PreTrainedTokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreTrainedTokenizer</span></code></a> which contains most of the methods. Users
+should refer to the superclass for more information regarding methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vocab_file</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – <a class="reference external" href="https://github.com/google/sentencepiece">SentencePiece</a> file (generally has a <cite>.spm</cite> extension) that
+contains the vocabulary necessary to instantiate a tokenizer.</li>
+<li><strong>eos_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;/s&gt;”) – <p>The end of sequence token.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When building a sequence using special tokens, this is not the token that is used for the end
+of sequence. The token used is the <code class="xref py py-obj docutils literal notranslate"><span class="pre">sep_token</span></code>.</p>
+</div>
+</li>
+<li><strong>unk_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;unk&gt;”) – The unknown token. A token that is not in the vocabulary cannot be converted to an ID and is set to be this
+token instead.</li>
+<li><strong>pad_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;pad&gt;”) – The token used for padding, for example when batching sequences of different lengths.</li>
+<li><strong>extra_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[str]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">100</span></code>) – Add a number of extra ids added to the end of the vocabulary for use as sentinels.
+These tokens are accessible as “&lt;extra_id_{%d}&gt;” where “{%d}” is a number between 0 and extra_ids-1.
+Extra tokens are indexed from the end of the vocabulary up to beginnning (“&lt;extra_id_0&gt;” is the last token in the vocabulary like in T5 preprocessing
+see: <a class="reference external" href="https://github.com/google-research/text-to-text-transfer-transformer/blob/9fd7b14a769417be33bc6c850f9598764913c833/t5/data/preprocessors.py#L2117">https://github.com/google-research/text-to-text-transfer-transformer/blob/9fd7b14a769417be33bc6c850f9598764913c833/t5/data/preprocessors.py#L2117</a>)</li>
+<li><strong>additional_special_tokens</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[str]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Additional special tokens used by the tokenizer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.T5Tokenizer.build_inputs_with_special_tokens">
+<code class="descname">build_inputs_with_special_tokens</code><span class="sig-paren">(</span><em>token_ids_0</em>, <em>token_ids_1=None</em><span class="sig-paren">)</span><a class="headerlink" href="#transformers.T5Tokenizer.build_inputs_with_special_tokens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build model inputs from a sequence or a pair of sequence for sequence classification tasks
+by concatenating and adding special tokens.
+A RoBERTa sequence has the following format:</p>
+<blockquote>
+<div>single sequence: &lt;s&gt; X &lt;/s&gt;
+pair of sequences: &lt;s&gt; A &lt;/s&gt;&lt;/s&gt; B &lt;/s&gt;</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.T5Tokenizer.get_special_tokens_mask">
+<code class="descname">get_special_tokens_mask</code><span class="sig-paren">(</span><em>token_ids_0</em>, <em>token_ids_1=None</em>, <em>already_has_special_tokens=False</em><span class="sig-paren">)</span><a class="headerlink" href="#transformers.T5Tokenizer.get_special_tokens_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves sequence ids from a token list that has no special tokens added. This method is called when adding
+special tokens using the tokenizer <code class="docutils literal notranslate"><span class="pre">prepare_for_model</span></code> or <code class="docutils literal notranslate"><span class="pre">encode_plus</span></code> methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>token_ids_0</strong> – list of ids (must not contain special tokens)</li>
+<li><strong>token_ids_1</strong> – Optional list of ids (must not contain special tokens), necessary when fetching sequence ids
+for sequence pairs</li>
+<li><strong>already_has_special_tokens</strong> – (default False) Set to True if the token list is already formated with
+special tokens for the model</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">1 for a special token, 0 for a sequence token.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">A list of integers in the range [0, 1]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.T5Tokenizer.save_vocabulary">
+<code class="descname">save_vocabulary</code><span class="sig-paren">(</span><em>save_directory</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/tokenization_t5.html#T5Tokenizer.save_vocabulary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5Tokenizer.save_vocabulary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the sentencepiece vocabulary (copy original file) and special tokens file
+to a directory.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="t5model">
+<h2>T5Model<a class="headerlink" href="#t5model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.T5Model">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">T5Model</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bare T5 Model transformer outputting raw hidden-stateswithout any specific head on top.    The T5 model was proposed in
+<a href="#id4"><span class="problematic" id="id5">`Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer`_</span></a>
+by Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu.
+It’s an encoder decoder transformer pre-trained in a text-to-text denoising generative setting.</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#module">torch.nn.Module</a> sub-class. Use it as a regular PyTorch Module and
+refer to the PyTorch documentation for all matter related to general usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.T5Config" title="transformers.T5Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">T5Config</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.T5Model.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>attention_mask=None</em>, <em>encoder_outputs=None</em>, <em>decoder_input_ids=None</em>, <em>decoder_attention_mask=None</em>, <em>inputs_embeds=None</em>, <em>decoder_inputs_embeds=None</em>, <em>head_mask=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5Model.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5Model.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.T5Model" title="transformers.T5Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">T5Model</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – <p>Indices of input sequence tokens in the vocabulary.
+To match pre-training, T5 input sequence should be formatted with [CLS] and [SEP] tokens as follows:</p>
+<ol class="loweralpha">
+<li>For sequence pairs:<p><code class="docutils literal notranslate"><span class="pre">tokens:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[CLS]</span> <span class="pre">is</span> <span class="pre">this</span> <span class="pre">jack</span> <span class="pre">##son</span> <span class="pre">##ville</span> <span class="pre">?</span> <span class="pre">[SEP]</span> <span class="pre">no</span> <span class="pre">it</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">.</span> <span class="pre">[SEP]</span></code></p>
+</li>
+<li>For single sequences:<p><code class="docutils literal notranslate"><span class="pre">tokens:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[CLS]</span> <span class="pre">the</span> <span class="pre">dog</span> <span class="pre">is</span> <span class="pre">hairy</span> <span class="pre">.</span> <span class="pre">[SEP]</span></code></p>
+</li>
+</ol>
+<p>T5 is a model with relative position embeddings so you should be able to pad the inputs on
+the right or the left.</p>
+<p>Indices can be obtained using <a class="reference internal" href="#transformers.T5Tokenizer" title="transformers.T5Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.T5Tokenizer</span></code></a>.
+See <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode" title="transformers.PreTrainedTokenizer.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode()</span></code></a> and
+<a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.convert_tokens_to_ids" title="transformers.PreTrainedTokenizer.convert_tokens_to_ids"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.convert_tokens_to_ids()</span></code></a> for details.</p>
+</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</li>
+<li><strong>encoder_outputs</strong> (tuple(<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Tuple consists of (<cite>last_hidden_state</cite>, <cite>optional</cite>: <cite>hidden_states</cite>, <cite>optional</cite>: <cite>attentions</cite>)
+<cite>last_hidden_state</cite> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) is a sequence of hidden-states at the output of the last layer of the encoder.
+Used in the cross-attention of the decoder.</li>
+<li><strong>decoder_input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">target_sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Provide for sequence to sequence training. T5 uses the pad_token_id as the starting token for decoder_input_ids generation.</li>
+<li><strong>decoder_attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.BoolTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">tgt_seq_len)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Default behavior: generate a tensor that ignores pad tokens in decoder_input_ids. Causal mask will also be used by default.</li>
+<li><strong>inputs_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>decoder_inputs_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">target_sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">decoder_input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>decoder_input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>head_mask</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_heads,)</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">num_heads)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>):
+Mask to nullify selected heads of the self-attention modules.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> indicates the head is <strong>not masked</strong>, <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates the head is <strong>masked</strong>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.T5Config" title="transformers.T5Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">T5Config</span></code></a>) and inputs.
+last_hidden_state (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>):</p>
+<blockquote>
+<div><p>Sequence of hidden-states at the output of the last layer of the model.</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.</p>
+<p class="last">Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">T5Tokenizer</span><span class="p">,</span> <span class="n">T5Model</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">T5Tokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;t5-small&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">T5Model</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;t5-small&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">decoder_input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">)</span>
+<span class="n">last_hidden_states</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># The last hidden-state is the first element of the output tuple</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.T5Model.get_input_embeddings">
+<code class="descname">get_input_embeddings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5Model.get_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5Model.get_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s input embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A torch module mapping vocabulary to hidden states.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.T5Model.set_input_embeddings">
+<code class="descname">set_input_embeddings</code><span class="sig-paren">(</span><em>new_embeddings</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5Model.set_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5Model.set_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model’s input embeddings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code>) – A module mapping vocabulary to hidden states.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="t5forconditionalgeneration">
+<h2>T5ForConditionalGeneration<a class="headerlink" href="#t5forconditionalgeneration" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.T5ForConditionalGeneration">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">T5ForConditionalGeneration</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5ForConditionalGeneration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5ForConditionalGeneration" title="Permalink to this definition">¶</a></dt>
+<dd><p>T5 Model with a <cite>language modeling</cite> head on top.     The T5 model was proposed in
+<a href="#id6"><span class="problematic" id="id7">`Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer`_</span></a>
+by Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, Peter J. Liu.
+It’s an encoder decoder transformer pre-trained in a text-to-text denoising generative setting.</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#module">torch.nn.Module</a> sub-class. Use it as a regular PyTorch Module and
+refer to the PyTorch documentation for all matter related to general usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.T5Config" title="transformers.T5Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">T5Config</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.T5ForConditionalGeneration.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>attention_mask=None</em>, <em>encoder_outputs=None</em>, <em>decoder_input_ids=None</em>, <em>decoder_attention_mask=None</em>, <em>lm_labels=None</em>, <em>inputs_embeds=None</em>, <em>decoder_inputs_embeds=None</em>, <em>head_mask=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5ForConditionalGeneration.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5ForConditionalGeneration.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.T5ForConditionalGeneration" title="transformers.T5ForConditionalGeneration"><code class="xref py py-class docutils literal notranslate"><span class="pre">T5ForConditionalGeneration</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – <p>Indices of input sequence tokens in the vocabulary.
+To match pre-training, T5 input sequence should be formatted with [CLS] and [SEP] tokens as follows:</p>
+<ol class="loweralpha">
+<li>For sequence pairs:<p><code class="docutils literal notranslate"><span class="pre">tokens:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[CLS]</span> <span class="pre">is</span> <span class="pre">this</span> <span class="pre">jack</span> <span class="pre">##son</span> <span class="pre">##ville</span> <span class="pre">?</span> <span class="pre">[SEP]</span> <span class="pre">no</span> <span class="pre">it</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">.</span> <span class="pre">[SEP]</span></code></p>
+</li>
+<li>For single sequences:<p><code class="docutils literal notranslate"><span class="pre">tokens:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">[CLS]</span> <span class="pre">the</span> <span class="pre">dog</span> <span class="pre">is</span> <span class="pre">hairy</span> <span class="pre">.</span> <span class="pre">[SEP]</span></code></p>
+</li>
+</ol>
+<p>T5 is a model with relative position embeddings so you should be able to pad the inputs on
+the right or the left.</p>
+<p>Indices can be obtained using <a class="reference internal" href="#transformers.T5Tokenizer" title="transformers.T5Tokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.T5Tokenizer</span></code></a>.
+See <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode" title="transformers.PreTrainedTokenizer.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode()</span></code></a> and
+<a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.convert_tokens_to_ids" title="transformers.PreTrainedTokenizer.convert_tokens_to_ids"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.convert_tokens_to_ids()</span></code></a> for details.</p>
+</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</li>
+<li><strong>encoder_outputs</strong> (tuple(<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Tuple consists of (<cite>last_hidden_state</cite>, <cite>optional</cite>: <cite>hidden_states</cite>, <cite>optional</cite>: <cite>attentions</cite>)
+<cite>last_hidden_state</cite> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) is a sequence of hidden-states at the output of the last layer of the encoder.
+Used in the cross-attention of the decoder.</li>
+<li><strong>decoder_input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">target_sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Provide for sequence to sequence training. T5 uses the pad_token_id as the starting token for decoder_input_ids generation.</li>
+<li><strong>decoder_attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.BoolTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">tgt_seq_len)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Default behavior: generate a tensor that ignores pad tokens in decoder_input_ids. Causal mask will also be used by default.</li>
+<li><strong>inputs_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>decoder_inputs_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">target_sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">decoder_input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>decoder_input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>head_mask</strong> – (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_heads,)</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">num_heads)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>):
+Mask to nullify selected heads of the self-attention modules.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> indicates the head is <strong>not masked</strong>, <code class="docutils literal notranslate"><span class="pre">0</span></code> indicates the head is <strong>masked</strong>.</li>
+<li><strong>lm_labels</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for computing the sequence classification/regression loss.
+Indices should be in <code class="xref py py-obj docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">config.vocab_size</span> <span class="pre">-</span> <span class="pre">1]</span></code>.
+If <code class="xref py py-obj docutils literal notranslate"><span class="pre">config.num_labels</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> a classification loss is computed (Cross-Entropy).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.T5Config" title="transformers.T5Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">T5Config</span></code></a>) and inputs.
+loss (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(1,)</span></code>, <cite>optional</cite>, returned when <code class="xref py py-obj docutils literal notranslate"><span class="pre">lm_label</span></code> is provided):</p>
+<blockquote>
+<div><p>Classification loss (cross entropy).</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>prediction_scores (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">config.vocab_size)</span></code>)</dt>
+<dd><p class="first last">Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first last">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.
+Attentions weights after the attention softmax, used to compute the weighted average in the self-attention.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">T5Tokenizer</span><span class="p">,</span> <span class="n">T5ForConditionalGeneration</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">T5Tokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;t5-small&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">T5ForConditionalGeneration</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;t5-small&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">decoder_input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">lm_labels</span><span class="o">=</span><span class="n">input_ids</span><span class="p">)</span>
+<span class="n">loss</span><span class="p">,</span> <span class="n">prediction_scores</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">T5Tokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;t5-small&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">T5ForConditionalGeneration</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;t5-small&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;summarize: Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.T5ForConditionalGeneration.get_input_embeddings">
+<code class="descname">get_input_embeddings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5ForConditionalGeneration.get_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5ForConditionalGeneration.get_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s input embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A torch module mapping vocabulary to hidden states.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.T5ForConditionalGeneration.get_output_embeddings">
+<code class="descname">get_output_embeddings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5ForConditionalGeneration.get_output_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5ForConditionalGeneration.get_output_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s output embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A torch module mapping hidden states to vocabulary.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.T5ForConditionalGeneration.set_input_embeddings">
+<code class="descname">set_input_embeddings</code><span class="sig-paren">(</span><em>new_embeddings</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_t5.html#T5ForConditionalGeneration.set_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.T5ForConditionalGeneration.set_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model’s input embeddings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code>) – A module mapping vocabulary to hidden states.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="tft5model">
+<h2>TFT5Model<a class="headerlink" href="#tft5model" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tft5forconditionalgeneration">
+<h2>TFT5ForConditionalGeneration<a class="headerlink" href="#tft5forconditionalgeneration" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="bart.html" class="btn btn-neutral" title="Bart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, huggingface
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quickstart &mdash; transformers 2.6.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/huggingface.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/code-snippets.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pretrained models" href="pretrained_models.html" />
+    <link rel="prev" title="Transformers" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> transformers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#text-understanding">Text Understanding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#text-generation">Text Generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pretrained_models.html">Pretrained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_sharing.html">Model Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serialization.html">Loading Google AI or OpenAI pre-trained weights or PyTorch dump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="serialization.html#serialization-best-practices">Serialization best-practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="converting_tensorflow_models.html">Converting Tensorflow Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torchscript.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multilingual.html">Multi-lingual models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Classes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/model.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/pipelines.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/optimizer_schedules.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/optimizer_schedules.html#schedules">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/optimizer_schedules.html#gradient-strategies">Gradient Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_classes/processors.html">Processors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Migrating from pytorch-pretrained-bert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bertology.html">BERTology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/auto.html">AutoModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/gpt.html">OpenAI GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/transformerxl.html">Transformer XL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/gpt2.html">OpenAI GPT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/xlm.html">XLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/xlnet.html">XLNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/roberta.html">RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/distilbert.html">DistilBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/camembert.html">CamemBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/albert.html">ALBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/xlmroberta.html">XLM-RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/flaubert.html">FlauBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/bart.html">Bart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_doc/t5.html">T5</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">transformers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Quickstart</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/quickstart.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quickstart">
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h1>
+<p>The Transformer that has led to a renaissance in tools for natural
+language processing acheiving state-of-the-art results across almost
+all benchmarks.  The mission of <code class="docutils literal notranslate"><span class="pre">transformers</span></code> is to make it easy for
+anyone <em>to access, extend, and apply</em> these models for their own tasks.</p>
+<p>This guide walks you through two broad categories of tasks.</p>
+<ul class="simple">
+<li><em>Text Understanding</em>, e.g. <a class="reference external" href="#">sentiment classification</a>, <a class="reference external" href="#">question answering</a>, <a class="reference external" href="#">sentence labeling</a>, and <a class="reference external" href="#">information extraction</a>.</li>
+<li><em>Text Generation</em>, e.g. <a class="reference external" href="#">conditional generation</a>, <a class="reference external" href="#">text summarization</a>, and <a class="reference external" href="#">machine translation</a>.</li>
+</ul>
+<p>The library is written such a user does not need to be aware of the internals of the model. However,
+you do need to be aware of three key objects:</p>
+<ul class="simple">
+<li><em>Tokenizer</em>; Maps a sequence of words into a sequence of indices.</li>
+<li><em>Model</em>; Maps a sequence of indices into a sequence of feature embeddings.</li>
+<li><em>Head</em>; Maps a sequence of feature embeddings to a prediction.</li>
+</ul>
+<p>You can pair a most Model’s with a task-specific Head. The Model is
+quite large and <em>pre-trained</em> on a massive volume of text; whereas
+the Head is small and can be <em>fine-tuned</em> on a tiny annotated
+dataset.</p>
+<p>For the quickstart, we will focus on using <code class="docutils literal notranslate"><span class="pre">transformers</span></code> with community <a class="reference external" href="www.huggingface.co/models">shared
+models</a>. For mode details on training,
+see <a class="reference external" href="#">training</a>.</p>
+<!-- The two most common use cases for the library are tasks involving text understanding and --><!-- text generation. --><!-- Here are two examples showcasing a few `Bert` and `GPT2` classes and pre-trained models. --><!-- See full API reference for examples for each model class. --><div class="section" id="text-understanding">
+<h2>Text Understanding<a class="headerlink" href="#text-understanding" title="Permalink to this headline">¶</a></h2>
+<!-- Let's start by preparing a tokenized input (a list of token
+embeddings indices to be fed to Bert) from a text string using
+`BertTokenizer` --><p>This section demonstrates how to use  transformers for text
+understanding. We focus on sequence classification, i.e.
+predicting a class label based on a sentence. Specifically we try to
+predict if a movie review has negative or positive sentiment with a
+value between 1 and 5.</p>
+<p>We begin by specifying a specific model. We use
+a classic model in this family, known as <a class="reference external" href="#">Bert</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForSequenceClassification</span>
+
+<span class="c1"># Can use any model on huggingface.co. This model has been trained for sentiment.</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;nlptown/bert-base-multilingual-uncased-sentiment&#39;</span>
+
+<span class="c1"># Download pre-trained Tokenizer, Model, and Head.</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="c1"># Set for evaluation on GPU.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Next, we utilize the tokenizer to convert an input sentence to a format that
+the model can use.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># For this model, text format start with CLS and splits sentences with [SEP]</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;[CLS] Muppets Take Manhattan is a great movie . [SEP]&quot;</span>
+
+<span class="c1"># Tokenize input</span>
+<span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># Convert to PyTorch tensor format. </span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Finally, we pass this tensor to our model and mead to predict its output.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict the sentiment (1-5) for the input sentence. </span>
+<span class="n">model_output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_output</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That’s it. In 10 lines, we have quite powerful model for this task.
+Similar methods can be used for a range of other text understanding
+tasks. These include:</p>
+<ul class="simple">
+<li>AutoModelForTokenClassification</li>
+<li>AutoModelForSequenceClassification</li>
+<li>AutoModelForQuestionAnswering</li>
+<li>AutoModelForTokenClassification</li>
+</ul>
+<p>If you want access to the raw transformer outputs, you can also utilize.</p>
+<ul class="simple">
+<li>AutoModel</li>
+</ul>
+<p>For more advanced usage skip ahead to</p>
+<ul class="simple">
+<li>Tokenization</li>
+<li>Training</li>
+<li>Deployment</li>
+<li>Model Sharing</li>
+</ul>
+<div class="section" id="text-generation">
+<h3>Text Generation<a class="headerlink" href="#text-generation" title="Permalink to this headline">¶</a></h3>
+<p>This section demonstrates how to use transformers for text
+generation. We focus on langauge modeling, i.e.  predicting the next
+word in a sequence based on the previous words. Specifically we try to
+complete a sentence given only its beginning.  We use
+a large model of this class, known as <a class="reference external" href="#">GPT-2</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">AutoModelForLMHeadModel</span>
+
+<span class="c1"># Can use any model on huggingface.co. This model has been trained for language modeling.</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;gpt2&#39;</span>
+
+<span class="c1"># Download pre-trained Tokenizer, Model, and Head.</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForLMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="c1"># Set for evaluation on GPU.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Next, we utilize the tokenizer to convert an input sentence to a format that
+the model can use.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Encode a text inputs</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Who was Jim Henson ? Jim Henson was a&quot;</span>
+<span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># Convert indexed tokens in a PyTorch tensor</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Finally, we pass this to our model and decoder it to the next word.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Run the model.</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Convert to a word. </span>
+<span class="n">predicted_index</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="n">predicted_text</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">indexed_tokens</span> <span class="o">+</span> <span class="p">[</span><span class="n">predicted_index</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">predicted_text</span> <span class="o">==</span> <span class="s1">&#39;Who was Jim Henson? Jim Henson was a man&#39;</span>
+</pre></div>
+</div>
+<p>If we want to generate a sequence of output words we can continue running
+in a loop.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">generated</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">context</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">generated</span><span class="p">])</span>
+<span class="n">past</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">output</span><span class="p">,</span> <span class="n">past</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">past</span><span class="o">=</span><span class="n">past</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+
+    <span class="n">generated</span> <span class="o">+=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sequence</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">generated</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is the basic form of text generation but similar models and head
+can be used for a range of other text understanding tasks. These
+include:</p>
+<ul class="simple">
+<li>AutoModelForMaskedLM</li>
+<li>AutoModelForLMHeadModel</li>
+</ul>
+<p>For more advanced usage skip ahead to</p>
+<ul class="simple">
+<li>Tokenization</li>
+<li>Training</li>
+<li>Deployment</li>
+<li>Model Sharing</li>
+<li>Sequential generation</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pretrained_models.html" class="btn btn-neutral float-right" title="Pretrained models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Transformers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, huggingface
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/js/custom.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

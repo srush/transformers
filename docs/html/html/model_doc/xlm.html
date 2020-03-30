@@ -1,0 +1,1289 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>XLM &mdash; transformers 2.6.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/huggingface.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/code-snippets.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="XLNet" href="xlnet.html" />
+    <link rel="prev" title="OpenAI GPT2" href="gpt2.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> transformers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained_models.html">Pretrained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_sharing.html">Model Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html">Loading Google AI or OpenAI pre-trained weights or PyTorch dump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html#serialization-best-practices">Serialization best-practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converting_tensorflow_models.html">Converting Tensorflow Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torchscript.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilingual.html">Multi-lingual models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Classes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/model.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/pipelines.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html#schedules">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html#gradient-strategies">Gradient Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/processors.html">Processors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Migrating from pytorch-pretrained-bert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bertology.html">BERTology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Models</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="auto.html">AutoModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpt.html">OpenAI GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformerxl.html">Transformer XL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpt2.html">OpenAI GPT2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">XLM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlmconfig">XLMConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlmtokenizer">XLMTokenizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlmmodel">XLMModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlmwithlmheadmodel">XLMWithLMHeadModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlmforsequenceclassification">XLMForSequenceClassification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlmforquestionansweringsimple">XLMForQuestionAnsweringSimple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xlmforquestionanswering">XLMForQuestionAnswering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tfxlmmodel">TFXLMModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tfxlmwithlmheadmodel">TFXLMWithLMHeadModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tfxlmforsequenceclassification">TFXLMForSequenceClassification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tfxlmforquestionansweringsimple">TFXLMForQuestionAnsweringSimple</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xlnet.html">XLNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roberta.html">RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distilbert.html">DistilBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camembert.html">CamemBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="albert.html">ALBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xlmroberta.html">XLM-RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flaubert.html">FlauBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bart.html">Bart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t5.html">T5</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">transformers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>XLM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/model_doc/xlm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xlm">
+<h1>XLM<a class="headerlink" href="#xlm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The XLM model was proposed in <a class="reference external" href="https://arxiv.org/abs/1901.07291">Cross-lingual Language Model Pretraining</a>
+by Guillaume Lample*, Alexis Conneau*. It’s a transformer pre-trained using one of the following objectives:</p>
+<ul class="simple">
+<li>a causal language modeling (CLM) objective (next token prediction),</li>
+<li>a masked language modeling (MLM) objective (Bert-like), or</li>
+<li>a Translation Language Modeling (TLM) object (extension of Bert’s MLM to multiple language inputs)</li>
+</ul>
+<p>The abstract from the paper is the following:</p>
+<p><em>Recent studies have demonstrated the efficiency of generative pretraining for English natural language understanding.
+In this work, we extend this approach to multiple languages and show the effectiveness of cross-lingual pretraining.
+We propose two methods to learn cross-lingual language models (XLMs): one unsupervised that only relies on monolingual
+data, and one supervised that leverages parallel data with a new cross-lingual language model objective. We obtain
+state-of-the-art results on cross-lingual classification, unsupervised and supervised machine translation. On XNLI,
+our approach pushes the state of the art by an absolute gain of 4.9% accuracy. On unsupervised machine translation,
+we obtain 34.3 BLEU on WMT‘16 German-English, improving the previous state of the art by more than 9 BLEU. On
+supervised machine translation, we obtain a new state of the art of 38.5 BLEU on WMT‘16 Romanian-English, outperforming
+the previous best approach by more than 4 BLEU. Our code and pretrained models will be made publicly available.</em></p>
+<p>Tips:</p>
+<ul class="simple">
+<li>XLM has many different checkpoints, which were trained using different objectives: CLM, MLM or TLM. Make sure to
+select the correct objective for your task (e.g. MLM checkpoints are not suitable for generation).</li>
+<li>XLM has multilingual checkpoints which leverage a specific <cite>lang</cite> parameter. Check out the
+<a class="reference external" href="../multilingual.html">multi-lingual</a> page for more information.</li>
+</ul>
+</div>
+<div class="section" id="xlmconfig">
+<h2>XLMConfig<a class="headerlink" href="#xlmconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.XLMConfig">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">XLMConfig</code><span class="sig-paren">(</span><em>vocab_size=30145</em>, <em>emb_dim=2048</em>, <em>n_layers=12</em>, <em>n_heads=16</em>, <em>dropout=0.1</em>, <em>attention_dropout=0.1</em>, <em>gelu_activation=True</em>, <em>sinusoidal_embeddings=False</em>, <em>causal=False</em>, <em>asm=False</em>, <em>n_langs=1</em>, <em>use_lang_emb=True</em>, <em>max_position_embeddings=512</em>, <em>embed_init_std=0.02209708691207961</em>, <em>layer_norm_eps=1e-12</em>, <em>init_std=0.02</em>, <em>bos_index=0</em>, <em>eos_index=1</em>, <em>pad_index=2</em>, <em>unk_index=3</em>, <em>mask_index=5</em>, <em>is_encoder=True</em>, <em>summary_type='first'</em>, <em>summary_use_proj=True</em>, <em>summary_activation=None</em>, <em>summary_proj_to_labels=True</em>, <em>summary_first_dropout=0.1</em>, <em>start_n_top=5</em>, <em>end_n_top=5</em>, <em>mask_token_id=0</em>, <em>lang_id=0</em>, <em>pad_token_id=2</em>, <em>bos_token_id=0</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_xlm.html#XLMConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the configuration class to store the configuration of a <a class="reference internal" href="#transformers.XLMModel" title="transformers.XLMModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMModel</span></code></a>.
+It is used to instantiate an XLM model according to the specified arguments, defining the model
+architecture. Instantiating a configuration with the defaults will yield a similar configuration to that of
+the <a class="reference external" href="https://huggingface.co/xlm-mlm-en-2048">xlm-mlm-en-2048</a> architecture.</p>
+<p>Configuration objects inherit from  <a class="reference internal" href="../main_classes/configuration.html#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a> and can be used
+to control the model outputs. Read the documentation from  <a class="reference internal" href="../main_classes/configuration.html#transformers.PretrainedConfig" title="transformers.PretrainedConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PretrainedConfig</span></code></a>
+for more information.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vocab_size</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 30145) – Vocabulary size of the XLM model. Defines the different tokens that
+can be represented by the <cite>inputs_ids</cite> passed to the forward method of <a class="reference internal" href="#transformers.XLMModel" title="transformers.XLMModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMModel</span></code></a>.</li>
+<li><strong>emb_dim</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 2048) – Dimensionality of the encoder layers and the pooler layer.</li>
+<li><strong>n_layer</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 12) – Number of hidden layers in the Transformer encoder.</li>
+<li><strong>n_head</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 16) – Number of attention heads for each attention layer in the Transformer encoder.</li>
+<li><strong>dropout</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional, defaults to 0.1) – The dropout probability for all fully connected
+layers in the embeddings, encoder, and pooler.</li>
+<li><strong>attention_dropout</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional, defaults to 0.1) – The dropout probability for the attention mechanism</li>
+<li><strong>gelu_activation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – The non-linear activation function (function or string) in the
+encoder and pooler. If set to <cite>True</cite>, “gelu” will be used instead of “relu”.</li>
+<li><strong>sinusoidal_embeddings</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Whether to use sinusoidal positional embeddings instead of absolute positional embeddings.</li>
+<li><strong>causal</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Set this to <cite>True</cite> for the model to behave in a causal manner.
+Causal models use a triangular attention mask in order to only attend to the left-side context instead
+if a bidirectional context.</li>
+<li><strong>asm</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Whether to use an adaptive log softmax projection layer instead of a linear layer for the prediction
+layer.</li>
+<li><strong>n_langs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 1) – The number of languages the model handles. Set to 1 for monolingual models.</li>
+<li><strong>use_lang_emb</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – Whether to use language embeddings. Some models use additional language embeddings, see
+<a class="reference external" href="http://huggingface.co/transformers/multilingual.html#xlm-language-embeddings">the multilingual models page</a>
+for information on how to use them.</li>
+<li><strong>max_position_embeddings</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 512) – The maximum sequence length that this model might
+ever be used with. Typically set this to something large just in case
+(e.g., 512 or 1024 or 2048).</li>
+<li><strong>embed_init_std</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional, defaults to 2048^-0.5) – The standard deviation of the truncated_normal_initializer for
+initializing the embedding matrices.</li>
+<li><strong>init_std</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 50257) – The standard deviation of the truncated_normal_initializer for
+initializing all weight matrices except the embedding matrices.</li>
+<li><strong>layer_norm_eps</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional, defaults to 1e-12) – The epsilon used by the layer normalization layers.</li>
+<li><strong>bos_index</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 0) – The index of the beginning of sentence token in the vocabulary.</li>
+<li><strong>eos_index</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 1) – The index of the end of sentence token in the vocabulary.</li>
+<li><strong>pad_index</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 2) – The index of the padding token in the vocabulary.</li>
+<li><strong>unk_index</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 3) – The index of the unknown token in the vocabulary.</li>
+<li><strong>mask_index</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 5) – The index of the masking token in the vocabulary.</li>
+<li><strong>is_encoder</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – Whether the initialized model should be a transformer encoder or decoder as seen in Vaswani et al.</li>
+<li><strong>summary_type</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, optional, defaults to “first”) – <p>Argument used when doing sequence summary. Used in for the multiple choice head in
+<a class="reference internal" href="#transformers.XLMForSequenceClassification" title="transformers.XLMForSequenceClassification"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForSequenceClassification</span></code></a>.
+Is one of the following options:</p>
+<ul>
+<li>’last’ =&gt; take the last token hidden state (like XLNet)</li>
+<li>’first’ =&gt; take the first token hidden state (like Bert)</li>
+<li>’mean’ =&gt; take the mean of all tokens hidden states</li>
+<li>’cls_index’ =&gt; supply a Tensor of classification token position (GPT/GPT-2)</li>
+<li>’attn’ =&gt; Not implemented now, use multi-head attention</li>
+</ul>
+</li>
+<li><strong>summary_use_proj</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – Argument used when doing sequence summary. Used in for the multiple choice head in
+<a class="reference internal" href="#transformers.XLMForSequenceClassification" title="transformers.XLMForSequenceClassification"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForSequenceClassification</span></code></a>.
+Add a projection after the vector extraction</li>
+<li><strong>summary_activation</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Argument used when doing sequence summary. Used in for the multiple choice head in
+<a class="reference internal" href="#transformers.XLMForSequenceClassification" title="transformers.XLMForSequenceClassification"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForSequenceClassification</span></code></a>.
+‘tanh’ =&gt; add a tanh activation to the output, Other =&gt; no activation.</li>
+<li><strong>summary_proj_to_labels</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">boolean</span></code>, optional, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – Argument used when doing sequence summary. Used in for the multiple choice head in
+<a class="reference internal" href="#transformers.XLMForSequenceClassification" title="transformers.XLMForSequenceClassification"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForSequenceClassification</span></code></a>.
+If True, the projection outputs to config.num_labels classes (otherwise to hidden_size). Default: False.</li>
+<li><strong>summary_first_dropout</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, optional, defaults to 0.1) – Argument used when doing sequence summary. Used in for the multiple choice head in
+<a class="reference internal" href="#transformers.XLMForSequenceClassification" title="transformers.XLMForSequenceClassification"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForSequenceClassification</span></code></a>.
+Add a dropout before the projection and activation</li>
+<li><strong>start_n_top</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 5) – Used in the SQuAD evaluation script for XLM and XLNet.</li>
+<li><strong>end_n_top</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 5) – Used in the SQuAD evaluation script for XLM and XLNet.</li>
+<li><strong>mask_token_id</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 0) – Model agnostic parameter to identify masked tokens when generating text in an MLM context.</li>
+<li><strong>lang_id</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional, defaults to 1) – The ID of the language used by the model. This parameter is used when generating
+text in a given language.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">XLMConfig</span><span class="p">,</span> <span class="n">XLMModel</span>
+
+<span class="c1"># Initializing a XLM configuration</span>
+<span class="n">configuration</span> <span class="o">=</span> <span class="n">XLMConfig</span><span class="p">()</span>
+
+<span class="c1"># Initializing a model from the configuration</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XLMModel</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+
+<span class="c1"># Accessing the model configuration</span>
+<span class="n">configuration</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">config</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="transformers.XLMConfig.pretrained_config_archive_map">
+<code class="descname">pretrained_config_archive_map</code><a class="headerlink" href="#transformers.XLMConfig.pretrained_config_archive_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary containing all the available pre-trained checkpoints.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">Dict[str, str]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xlmtokenizer">
+<h2>XLMTokenizer<a class="headerlink" href="#xlmtokenizer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.XLMTokenizer">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">XLMTokenizer</code><span class="sig-paren">(</span><em>vocab_file, merges_file, unk_token='&lt;unk&gt;', bos_token='&lt;s&gt;', sep_token='&lt;/s&gt;', pad_token='&lt;pad&gt;', cls_token='&lt;/s&gt;', mask_token='&lt;special1&gt;', additional_special_tokens=['&lt;special0&gt;', '&lt;special1&gt;', '&lt;special2&gt;', '&lt;special3&gt;', '&lt;special4&gt;', '&lt;special5&gt;', '&lt;special6&gt;', '&lt;special7&gt;', '&lt;special8&gt;', '&lt;special9&gt;'], lang2id=None, id2lang=None, do_lowercase_and_remove_accent=True, **kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/tokenization_xlm.html#XLMTokenizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMTokenizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>BPE tokenizer for XLM</p>
+<ul class="simple">
+<li>Moses preprocessing &amp; tokenization for most supported languages</li>
+<li>Language specific tokenization for Chinese (Jieba), Japanese (KyTea) and Thai (PyThaiNLP)</li>
+<li>(optionally) lower case &amp; normalize all inputs text</li>
+<li>argument <code class="docutils literal notranslate"><span class="pre">special_tokens</span></code> and function <code class="docutils literal notranslate"><span class="pre">set_special_tokens</span></code>, can be used to add additional symbols       (ex: “__classify__”) to a vocabulary</li>
+<li><cite>lang2id</cite> attribute maps the languages supported by the model with their ids if provided (automatically set for pretrained vocabularies)</li>
+<li><cite>id2lang</cite> attributes does reverse mapping if provided (automatically set for pretrained vocabularies)</li>
+</ul>
+<p>This tokenizer inherits from <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer" title="transformers.PreTrainedTokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreTrainedTokenizer</span></code></a> which contains most of the methods. Users
+should refer to the superclass for more information regarding methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vocab_file</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – Vocabulary file.</li>
+<li><strong>merges_file</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>) – Merges file.</li>
+<li><strong>do_lower_case</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – Whether to lowercase the input when tokenizing.</li>
+<li><strong>remove_space</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – Whether to strip the text when tokenizing (removing excess spaces before and after the string).</li>
+<li><strong>keep_accents</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Whether to keep accents when tokenizing.</li>
+<li><strong>unk_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;unk&gt;”) – The unknown token. A token that is not in the vocabulary cannot be converted to an ID and is set to be this
+token instead.</li>
+<li><strong>bos_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;s&gt;”) – <p>The beginning of sequence token that was used during pre-training. Can be used a sequence classifier token.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When building a sequence using special tokens, this is not the token that is used for the beginning
+of sequence. The token used is the <code class="xref py py-obj docutils literal notranslate"><span class="pre">cls_token</span></code>.</p>
+</div>
+</li>
+<li><strong>sep_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;/s&gt;”) – The separator token, which is used when building a sequence from multiple sequences, e.g. two sequences
+for sequence classification or for a text and a question for question answering.
+It is also used as the last token of a sequence built with special tokens.</li>
+<li><strong>pad_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;pad&gt;”) – The token used for padding, for example when batching sequences of different lengths.</li>
+<li><strong>cls_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;/s&gt;”) – The classifier token which is used when doing sequence classification (classification of the whole
+sequence instead of per-token classification). It is the first token of the sequence when built with
+special tokens.</li>
+<li><strong>mask_token</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">string</span></code>, <cite>optional</cite>, defaults to “&lt;special1&gt;”) – The token used for masking values. This is the token used when training this model with masked language
+modeling. This is the token which the model will try to predict.</li>
+<li><strong>additional_special_tokens</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[str]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">[&quot;&lt;special0&gt;&quot;,&quot;&lt;special1&gt;&quot;,&quot;&lt;special2&gt;&quot;,&quot;&lt;special3&gt;&quot;,&quot;&lt;special4&gt;&quot;,&quot;&lt;special5&gt;&quot;,&quot;&lt;special6&gt;&quot;,&quot;&lt;special7&gt;&quot;,&quot;&lt;special8&gt;&quot;,&quot;&lt;special9&gt;&quot;]</span></code>) – List of additional special tokens.</li>
+<li><strong>lang2id</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">int]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Dictionary mapping languages string identifiers to their IDs.</li>
+<li><strong>id2lang</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[int,</span> <span class="pre">str</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Dictionary mapping language IDs to their string identifiers.</li>
+<li><strong>do_lowercase_and_remove_accent</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code>) – Whether to lowercase and remove accents when tokenizing.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.XLMTokenizer.build_inputs_with_special_tokens">
+<code class="descname">build_inputs_with_special_tokens</code><span class="sig-paren">(</span><em>token_ids_0: List[int], token_ids_1: Optional[List[int]] = None</em><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference internal" href="../_modules/transformers/tokenization_xlm.html#XLMTokenizer.build_inputs_with_special_tokens"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMTokenizer.build_inputs_with_special_tokens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build model inputs from a sequence or a pair of sequence for sequence classification tasks
+by concatenating and adding special tokens.
+A XLM sequence has the following format:</p>
+<ul class="simple">
+<li>single sequence: <code class="docutils literal notranslate"><span class="pre">&lt;s&gt;</span> <span class="pre">X</span> <span class="pre">&lt;/s&gt;</span></code></li>
+<li>pair of sequences: <code class="docutils literal notranslate"><span class="pre">&lt;s&gt;</span> <span class="pre">A</span> <span class="pre">&lt;/s&gt;</span> <span class="pre">B</span> <span class="pre">&lt;/s&gt;</span></code></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>token_ids_0</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code>) – List of IDs to which the special tokens will be added</li>
+<li><strong>token_ids_1</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optional second list of IDs for sequence pairs.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of <a class="reference external" href="../glossary.html#input-ids">input IDs</a> with the appropriate special tokens.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.XLMTokenizer.create_token_type_ids_from_sequences">
+<code class="descname">create_token_type_ids_from_sequences</code><span class="sig-paren">(</span><em>token_ids_0: List[int], token_ids_1: Optional[List[int]] = None</em><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference internal" href="../_modules/transformers/tokenization_xlm.html#XLMTokenizer.create_token_type_ids_from_sequences"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMTokenizer.create_token_type_ids_from_sequences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a mask from the two sequences passed to be used in a sequence-pair classification task.
+An XLM sequence pair mask has the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="o">|</span> <span class="n">first</span> <span class="n">sequence</span>    <span class="o">|</span> <span class="n">second</span> <span class="n">sequence</span> <span class="o">|</span>
+</pre></div>
+</div>
+<p>if token_ids_1 is None, only returns the first portion of the mask (0s).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>token_ids_0</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code>) – List of ids.</li>
+<li><strong>token_ids_1</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optional second list of IDs for sequence pairs.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of <a class="reference external" href="../glossary.html#token-type-ids">token type IDs</a> according to the given
+sequence(s).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.XLMTokenizer.get_special_tokens_mask">
+<code class="descname">get_special_tokens_mask</code><span class="sig-paren">(</span><em>token_ids_0: List[int], token_ids_1: Optional[List[int]] = None, already_has_special_tokens: bool = False</em><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference internal" href="../_modules/transformers/tokenization_xlm.html#XLMTokenizer.get_special_tokens_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMTokenizer.get_special_tokens_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves sequence ids from a token list that has no special tokens added. This method is called when adding
+special tokens using the tokenizer <code class="docutils literal notranslate"><span class="pre">prepare_for_model</span></code> or <code class="docutils literal notranslate"><span class="pre">encode_plus</span></code> methods.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>token_ids_0</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code>) – List of ids.</li>
+<li><strong>token_ids_1</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optional second list of IDs for sequence pairs.</li>
+<li><strong>already_has_special_tokens</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code>) – Set to True if the token list is already formatted with special tokens for the model</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A list of integers in the range [0, 1]: 0 for a special token, 1 for a sequence token.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">List[int]</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.XLMTokenizer.save_vocabulary">
+<code class="descname">save_vocabulary</code><span class="sig-paren">(</span><em>save_directory</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/tokenization_xlm.html#XLMTokenizer.save_vocabulary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMTokenizer.save_vocabulary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the vocabulary and special tokens file to a directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>save_directory</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code>) – The directory in which to save the vocabulary.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Paths to the files saved.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Tuple(str)</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xlmmodel">
+<h2>XLMModel<a class="headerlink" href="#xlmmodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.XLMModel">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">XLMModel</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bare XLM Model transformer outputting raw hidden-states without any specific head on top.</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general
+usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.XLMModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>attention_mask=None</em>, <em>langs=None</em>, <em>token_type_ids=None</em>, <em>position_ids=None</em>, <em>lengths=None</em>, <em>cache=None</em>, <em>head_mask=None</em>, <em>inputs_embeds=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.XLMModel" title="transformers.XLMModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMModel</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – <p>Indices of input sequence tokens in the vocabulary.</p>
+<p>Indices can be obtained using <a class="reference internal" href="bert.html#transformers.BertTokenizer" title="transformers.BertTokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BertTokenizer</span></code></a>.
+See <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode" title="transformers.PreTrainedTokenizer.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode()</span></code></a> and
+<a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode_plus" title="transformers.PreTrainedTokenizer.encode_plus"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode_plus()</span></code></a> for details.</p>
+<p><a class="reference external" href="../glossary.html#input-ids">What are input IDs?</a></p>
+</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</p>
+<p><a class="reference external" href="../glossary.html#attention-mask">What are attention masks?</a></p>
+</li>
+<li><strong>langs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>A parallel sequence of tokens to be used to indicate the language of each token in the input.
+Indices are languages ids which can be obtained from the language names by using two conversion mappings
+provided in the configuration of the model (only provided for multilingual models).
+More precisely, the <cite>language name -&gt; language id</cite> mapping is in <cite>model.config.lang2id</cite> (dict str -&gt; int) and
+the <cite>language id -&gt; language name</cite> mapping is <cite>model.config.id2lang</cite> (dict int -&gt; str).</p>
+<p>See usage examples detailed in the <a class="reference external" href="https://huggingface.co/transformers/multilingual.html">multilingual documentation</a>.</p>
+</li>
+<li><strong>token_type_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Segment token indices to indicate first and second portions of the inputs.
+Indices are selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>: <code class="docutils literal notranslate"><span class="pre">0</span></code> corresponds to a <cite>sentence A</cite> token, <code class="docutils literal notranslate"><span class="pre">1</span></code>
+corresponds to a <cite>sentence B</cite> token</p>
+<p><a class="reference external" href="../glossary.html#token-type-ids">What are token type IDs?</a></p>
+</li>
+<li><strong>position_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Indices of positions of each input sequence tokens in the position embeddings.
+Selected in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">config.max_position_embeddings</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p>
+<p><a class="reference external" href="../glossary.html#position-ids">What are position IDs?</a></p>
+</li>
+<li><strong>lengths</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Length of each sentence that can be used to avoid performing attention on padding token indices.
+You can also use <cite>attention_mask</cite> for the same result (see above), kept here for compatbility.
+Indices selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">input_ids.size(-1)]</span></code>:</li>
+<li><strong>cache</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.FloatTensor]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – dictionary with <code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> that contains pre-computed
+hidden-states (key and values in the attention blocks) as computed by the model
+(see <cite>cache</cite> output below). Can be used to speed up sequential decoding.
+The dictionary object will be modified in-place during the forward pass to add newly computed hidden-states.</li>
+<li><strong>head_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_heads,)</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">num_heads)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to nullify selected heads of the self-attention modules.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">1</span></code> indicates the head is <strong>not masked</strong>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code> indicates the head is <strong>masked</strong>.</li>
+<li><strong>input_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>last_hidden_state (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>):</dt>
+<dd><p class="first last">Sequence of hidden-states at the output of the last layer of the model.</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.</p>
+<p class="last">Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) and inputs</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">XLMTokenizer</span><span class="p">,</span> <span class="n">XLMModel</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">XLMTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XLMModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span>
+<span class="n">last_hidden_states</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># The last hidden-state is the first element of the output tuple</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.XLMModel.get_input_embeddings">
+<code class="descname">get_input_embeddings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMModel.get_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMModel.get_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s input embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A torch module mapping vocabulary to hidden states.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.XLMModel.set_input_embeddings">
+<code class="descname">set_input_embeddings</code><span class="sig-paren">(</span><em>new_embeddings</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMModel.set_input_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMModel.set_input_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model’s input embeddings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code>) – A module mapping vocabulary to hidden states.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xlmwithlmheadmodel">
+<h2>XLMWithLMHeadModel<a class="headerlink" href="#xlmwithlmheadmodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.XLMWithLMHeadModel">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">XLMWithLMHeadModel</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMWithLMHeadModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMWithLMHeadModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The XLM Model transformer with a language modeling head on top
+(linear layer with weights tied to the input embeddings).</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general
+usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.XLMWithLMHeadModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>attention_mask=None</em>, <em>langs=None</em>, <em>token_type_ids=None</em>, <em>position_ids=None</em>, <em>lengths=None</em>, <em>cache=None</em>, <em>head_mask=None</em>, <em>inputs_embeds=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMWithLMHeadModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMWithLMHeadModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.XLMWithLMHeadModel" title="transformers.XLMWithLMHeadModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMWithLMHeadModel</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – <p>Indices of input sequence tokens in the vocabulary.</p>
+<p>Indices can be obtained using <a class="reference internal" href="bert.html#transformers.BertTokenizer" title="transformers.BertTokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BertTokenizer</span></code></a>.
+See <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode" title="transformers.PreTrainedTokenizer.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode()</span></code></a> and
+<a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode_plus" title="transformers.PreTrainedTokenizer.encode_plus"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode_plus()</span></code></a> for details.</p>
+<p><a class="reference external" href="../glossary.html#input-ids">What are input IDs?</a></p>
+</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</p>
+<p><a class="reference external" href="../glossary.html#attention-mask">What are attention masks?</a></p>
+</li>
+<li><strong>langs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>A parallel sequence of tokens to be used to indicate the language of each token in the input.
+Indices are languages ids which can be obtained from the language names by using two conversion mappings
+provided in the configuration of the model (only provided for multilingual models).
+More precisely, the <cite>language name -&gt; language id</cite> mapping is in <cite>model.config.lang2id</cite> (dict str -&gt; int) and
+the <cite>language id -&gt; language name</cite> mapping is <cite>model.config.id2lang</cite> (dict int -&gt; str).</p>
+<p>See usage examples detailed in the <a class="reference external" href="https://huggingface.co/transformers/multilingual.html">multilingual documentation</a>.</p>
+</li>
+<li><strong>token_type_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Segment token indices to indicate first and second portions of the inputs.
+Indices are selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>: <code class="docutils literal notranslate"><span class="pre">0</span></code> corresponds to a <cite>sentence A</cite> token, <code class="docutils literal notranslate"><span class="pre">1</span></code>
+corresponds to a <cite>sentence B</cite> token</p>
+<p><a class="reference external" href="../glossary.html#token-type-ids">What are token type IDs?</a></p>
+</li>
+<li><strong>position_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Indices of positions of each input sequence tokens in the position embeddings.
+Selected in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">config.max_position_embeddings</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p>
+<p><a class="reference external" href="../glossary.html#position-ids">What are position IDs?</a></p>
+</li>
+<li><strong>lengths</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Length of each sentence that can be used to avoid performing attention on padding token indices.
+You can also use <cite>attention_mask</cite> for the same result (see above), kept here for compatbility.
+Indices selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">input_ids.size(-1)]</span></code>:</li>
+<li><strong>cache</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.FloatTensor]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – dictionary with <code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> that contains pre-computed
+hidden-states (key and values in the attention blocks) as computed by the model
+(see <cite>cache</cite> output below). Can be used to speed up sequential decoding.
+The dictionary object will be modified in-place during the forward pass to add newly computed hidden-states.</li>
+<li><strong>head_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_heads,)</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">num_heads)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to nullify selected heads of the self-attention modules.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">1</span></code> indicates the head is <strong>not masked</strong>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code> indicates the head is <strong>masked</strong>.</li>
+<li><strong>input_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>labels</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for language modeling.
+Note that the labels <strong>are shifted</strong> inside the model, i.e. you can set <code class="docutils literal notranslate"><span class="pre">lm_labels</span> <span class="pre">=</span> <span class="pre">input_ids</span></code>
+Indices are selected in <code class="docutils literal notranslate"><span class="pre">[-100,</span> <span class="pre">0,</span> <span class="pre">...,</span> <span class="pre">config.vocab_size]</span></code>
+All labels set to <code class="docutils literal notranslate"><span class="pre">-100</span></code> are ignored (masked), the loss is only
+computed for labels in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">config.vocab_size]</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>loss (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <cite>(1,)</cite>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">labels</span></code> is provided)</dt>
+<dd><p class="first last">Language modeling loss.</p>
+</dd>
+<dt>prediction_scores (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">config.vocab_size)</span></code>):</dt>
+<dd><p class="first last">Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.</p>
+<p class="last">Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) and inputs</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">XLMTokenizer</span><span class="p">,</span> <span class="n">XLMWithLMHeadModel</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">XLMTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XLMWithLMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span>
+<span class="n">last_hidden_states</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># The last hidden-state is the first element of the output tuple</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.XLMWithLMHeadModel.get_output_embeddings">
+<code class="descname">get_output_embeddings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMWithLMHeadModel.get_output_embeddings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMWithLMHeadModel.get_output_embeddings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s output embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A torch module mapping hidden states to vocabulary.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nn.Module</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xlmforsequenceclassification">
+<h2>XLMForSequenceClassification<a class="headerlink" href="#xlmforsequenceclassification" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.XLMForSequenceClassification">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">XLMForSequenceClassification</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMForSequenceClassification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMForSequenceClassification" title="Permalink to this definition">¶</a></dt>
+<dd><p>XLM Model with a sequence classification/regression head on top (a linear layer on top of
+the pooled output) e.g. for GLUE tasks.</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general
+usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.XLMForSequenceClassification.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>attention_mask=None</em>, <em>langs=None</em>, <em>token_type_ids=None</em>, <em>position_ids=None</em>, <em>lengths=None</em>, <em>cache=None</em>, <em>head_mask=None</em>, <em>inputs_embeds=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMForSequenceClassification.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMForSequenceClassification.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.XLMForSequenceClassification" title="transformers.XLMForSequenceClassification"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForSequenceClassification</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – <p>Indices of input sequence tokens in the vocabulary.</p>
+<p>Indices can be obtained using <a class="reference internal" href="bert.html#transformers.BertTokenizer" title="transformers.BertTokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BertTokenizer</span></code></a>.
+See <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode" title="transformers.PreTrainedTokenizer.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode()</span></code></a> and
+<a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode_plus" title="transformers.PreTrainedTokenizer.encode_plus"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode_plus()</span></code></a> for details.</p>
+<p><a class="reference external" href="../glossary.html#input-ids">What are input IDs?</a></p>
+</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</p>
+<p><a class="reference external" href="../glossary.html#attention-mask">What are attention masks?</a></p>
+</li>
+<li><strong>langs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>A parallel sequence of tokens to be used to indicate the language of each token in the input.
+Indices are languages ids which can be obtained from the language names by using two conversion mappings
+provided in the configuration of the model (only provided for multilingual models).
+More precisely, the <cite>language name -&gt; language id</cite> mapping is in <cite>model.config.lang2id</cite> (dict str -&gt; int) and
+the <cite>language id -&gt; language name</cite> mapping is <cite>model.config.id2lang</cite> (dict int -&gt; str).</p>
+<p>See usage examples detailed in the <a class="reference external" href="https://huggingface.co/transformers/multilingual.html">multilingual documentation</a>.</p>
+</li>
+<li><strong>token_type_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Segment token indices to indicate first and second portions of the inputs.
+Indices are selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>: <code class="docutils literal notranslate"><span class="pre">0</span></code> corresponds to a <cite>sentence A</cite> token, <code class="docutils literal notranslate"><span class="pre">1</span></code>
+corresponds to a <cite>sentence B</cite> token</p>
+<p><a class="reference external" href="../glossary.html#token-type-ids">What are token type IDs?</a></p>
+</li>
+<li><strong>position_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Indices of positions of each input sequence tokens in the position embeddings.
+Selected in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">config.max_position_embeddings</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p>
+<p><a class="reference external" href="../glossary.html#position-ids">What are position IDs?</a></p>
+</li>
+<li><strong>lengths</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Length of each sentence that can be used to avoid performing attention on padding token indices.
+You can also use <cite>attention_mask</cite> for the same result (see above), kept here for compatbility.
+Indices selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">input_ids.size(-1)]</span></code>:</li>
+<li><strong>cache</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.FloatTensor]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – dictionary with <code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> that contains pre-computed
+hidden-states (key and values in the attention blocks) as computed by the model
+(see <cite>cache</cite> output below). Can be used to speed up sequential decoding.
+The dictionary object will be modified in-place during the forward pass to add newly computed hidden-states.</li>
+<li><strong>head_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_heads,)</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">num_heads)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to nullify selected heads of the self-attention modules.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">1</span></code> indicates the head is <strong>not masked</strong>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code> indicates the head is <strong>masked</strong>.</li>
+<li><strong>input_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>labels</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for computing the sequence classification/regression loss.
+Indices should be in <code class="xref py py-obj docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">config.num_labels</span> <span class="pre">-</span> <span class="pre">1]</span></code>.
+If <code class="xref py py-obj docutils literal notranslate"><span class="pre">config.num_labels</span> <span class="pre">==</span> <span class="pre">1</span></code> a regression loss is computed (Mean-Square loss),
+If <code class="xref py py-obj docutils literal notranslate"><span class="pre">config.num_labels</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> a classification loss is computed (Cross-Entropy).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>loss (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(1,)</span></code>, <cite>optional</cite>, returned when <code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code> is provided):</dt>
+<dd><p class="first last">Classification (or regression if config.num_labels==1) loss.</p>
+</dd>
+<dt>logits (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">config.num_labels)</span></code>):</dt>
+<dd><p class="first last">Classification (or regression if config.num_labels==1) scores (before SoftMax).</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.</p>
+<p class="last">Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) and inputs</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">XLMTokenizer</span><span class="p">,</span> <span class="n">XLMForSequenceClassification</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">XLMTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XLMForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">loss</span><span class="p">,</span> <span class="n">logits</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xlmforquestionansweringsimple">
+<h2>XLMForQuestionAnsweringSimple<a class="headerlink" href="#xlmforquestionansweringsimple" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.XLMForQuestionAnsweringSimple">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">XLMForQuestionAnsweringSimple</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMForQuestionAnsweringSimple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMForQuestionAnsweringSimple" title="Permalink to this definition">¶</a></dt>
+<dd><p>XLM Model with a span classification head on top for extractive question-answering tasks like SQuAD (a linear layers on top of
+the hidden-states output to compute <cite>span start logits</cite> and <cite>span end logits</cite>).</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general
+usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.XLMForQuestionAnsweringSimple.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>attention_mask=None</em>, <em>langs=None</em>, <em>token_type_ids=None</em>, <em>position_ids=None</em>, <em>lengths=None</em>, <em>cache=None</em>, <em>head_mask=None</em>, <em>inputs_embeds=None</em>, <em>start_positions=None</em>, <em>end_positions=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMForQuestionAnsweringSimple.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMForQuestionAnsweringSimple.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.XLMForQuestionAnsweringSimple" title="transformers.XLMForQuestionAnsweringSimple"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForQuestionAnsweringSimple</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – <p>Indices of input sequence tokens in the vocabulary.</p>
+<p>Indices can be obtained using <a class="reference internal" href="bert.html#transformers.BertTokenizer" title="transformers.BertTokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BertTokenizer</span></code></a>.
+See <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode" title="transformers.PreTrainedTokenizer.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode()</span></code></a> and
+<a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode_plus" title="transformers.PreTrainedTokenizer.encode_plus"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode_plus()</span></code></a> for details.</p>
+<p><a class="reference external" href="../glossary.html#input-ids">What are input IDs?</a></p>
+</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</p>
+<p><a class="reference external" href="../glossary.html#attention-mask">What are attention masks?</a></p>
+</li>
+<li><strong>langs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>A parallel sequence of tokens to be used to indicate the language of each token in the input.
+Indices are languages ids which can be obtained from the language names by using two conversion mappings
+provided in the configuration of the model (only provided for multilingual models).
+More precisely, the <cite>language name -&gt; language id</cite> mapping is in <cite>model.config.lang2id</cite> (dict str -&gt; int) and
+the <cite>language id -&gt; language name</cite> mapping is <cite>model.config.id2lang</cite> (dict int -&gt; str).</p>
+<p>See usage examples detailed in the <a class="reference external" href="https://huggingface.co/transformers/multilingual.html">multilingual documentation</a>.</p>
+</li>
+<li><strong>token_type_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Segment token indices to indicate first and second portions of the inputs.
+Indices are selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>: <code class="docutils literal notranslate"><span class="pre">0</span></code> corresponds to a <cite>sentence A</cite> token, <code class="docutils literal notranslate"><span class="pre">1</span></code>
+corresponds to a <cite>sentence B</cite> token</p>
+<p><a class="reference external" href="../glossary.html#token-type-ids">What are token type IDs?</a></p>
+</li>
+<li><strong>position_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Indices of positions of each input sequence tokens in the position embeddings.
+Selected in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">config.max_position_embeddings</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p>
+<p><a class="reference external" href="../glossary.html#position-ids">What are position IDs?</a></p>
+</li>
+<li><strong>lengths</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Length of each sentence that can be used to avoid performing attention on padding token indices.
+You can also use <cite>attention_mask</cite> for the same result (see above), kept here for compatbility.
+Indices selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">input_ids.size(-1)]</span></code>:</li>
+<li><strong>cache</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.FloatTensor]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – dictionary with <code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> that contains pre-computed
+hidden-states (key and values in the attention blocks) as computed by the model
+(see <cite>cache</cite> output below). Can be used to speed up sequential decoding.
+The dictionary object will be modified in-place during the forward pass to add newly computed hidden-states.</li>
+<li><strong>head_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_heads,)</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">num_heads)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to nullify selected heads of the self-attention modules.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">1</span></code> indicates the head is <strong>not masked</strong>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code> indicates the head is <strong>masked</strong>.</li>
+<li><strong>input_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>start_positions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for position (index) of the start of the labelled span for computing the token classification loss.
+Positions are clamped to the length of the sequence (<cite>sequence_length</cite>).
+Position outside of the sequence are not taken into account for computing the loss.</li>
+<li><strong>end_positions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for position (index) of the end of the labelled span for computing the token classification loss.
+Positions are clamped to the length of the sequence (<cite>sequence_length</cite>).
+Position outside of the sequence are not taken into account for computing the loss.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>loss (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(1,)</span></code>, <cite>optional</cite>, returned when <code class="xref py py-obj docutils literal notranslate"><span class="pre">labels</span></code> is provided):</dt>
+<dd><p class="first last">Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.</p>
+</dd>
+<dt>start_scores (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,)</span></code>):</dt>
+<dd><p class="first last">Span-start scores (before SoftMax).</p>
+</dd>
+<dt>end_scores (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,)</span></code>):</dt>
+<dd><p class="first last">Span-end scores (before SoftMax).</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.</p>
+<p class="last">Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) and inputs</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">XLMTokenizer</span><span class="p">,</span> <span class="n">XLMForQuestionAnsweringSimple</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">XLMTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XLMForQuestionAnsweringSimple</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">start_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">end_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">start_positions</span><span class="o">=</span><span class="n">start_positions</span><span class="p">,</span> <span class="n">end_positions</span><span class="o">=</span><span class="n">end_positions</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xlmforquestionanswering">
+<h2>XLMForQuestionAnswering<a class="headerlink" href="#xlmforquestionanswering" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.XLMForQuestionAnswering">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">XLMForQuestionAnswering</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMForQuestionAnswering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMForQuestionAnswering" title="Permalink to this definition">¶</a></dt>
+<dd><p>XLM Model with a beam-search span classification head on top for extractive question-answering tasks like SQuAD (a linear layers on top of
+the hidden-states output to compute <cite>span start logits</cite> and <cite>span end logits</cite>).</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class.
+Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general
+usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.XLMForQuestionAnswering.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>attention_mask=None</em>, <em>langs=None</em>, <em>token_type_ids=None</em>, <em>position_ids=None</em>, <em>lengths=None</em>, <em>cache=None</em>, <em>head_mask=None</em>, <em>inputs_embeds=None</em>, <em>start_positions=None</em>, <em>end_positions=None</em>, <em>is_impossible=None</em>, <em>cls_index=None</em>, <em>p_mask=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_xlm.html#XLMForQuestionAnswering.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.XLMForQuestionAnswering.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.XLMForQuestionAnswering" title="transformers.XLMForQuestionAnswering"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMForQuestionAnswering</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – <p>Indices of input sequence tokens in the vocabulary.</p>
+<p>Indices can be obtained using <a class="reference internal" href="bert.html#transformers.BertTokenizer" title="transformers.BertTokenizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BertTokenizer</span></code></a>.
+See <a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode" title="transformers.PreTrainedTokenizer.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode()</span></code></a> and
+<a class="reference internal" href="../main_classes/tokenizer.html#transformers.PreTrainedTokenizer.encode_plus" title="transformers.PreTrainedTokenizer.encode_plus"><code class="xref py py-func docutils literal notranslate"><span class="pre">transformers.PreTrainedTokenizer.encode_plus()</span></code></a> for details.</p>
+<p><a class="reference external" href="../glossary.html#input-ids">What are input IDs?</a></p>
+</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</p>
+<p><a class="reference external" href="../glossary.html#attention-mask">What are attention masks?</a></p>
+</li>
+<li><strong>langs</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>A parallel sequence of tokens to be used to indicate the language of each token in the input.
+Indices are languages ids which can be obtained from the language names by using two conversion mappings
+provided in the configuration of the model (only provided for multilingual models).
+More precisely, the <cite>language name -&gt; language id</cite> mapping is in <cite>model.config.lang2id</cite> (dict str -&gt; int) and
+the <cite>language id -&gt; language name</cite> mapping is <cite>model.config.id2lang</cite> (dict int -&gt; str).</p>
+<p>See usage examples detailed in the <a class="reference external" href="https://huggingface.co/transformers/multilingual.html">multilingual documentation</a>.</p>
+</li>
+<li><strong>token_type_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Segment token indices to indicate first and second portions of the inputs.
+Indices are selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>: <code class="docutils literal notranslate"><span class="pre">0</span></code> corresponds to a <cite>sentence A</cite> token, <code class="docutils literal notranslate"><span class="pre">1</span></code>
+corresponds to a <cite>sentence B</cite> token</p>
+<p><a class="reference external" href="../glossary.html#token-type-ids">What are token type IDs?</a></p>
+</li>
+<li><strong>position_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – <p>Indices of positions of each input sequence tokens in the position embeddings.
+Selected in the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">config.max_position_embeddings</span> <span class="pre">-</span> <span class="pre">1]</span></code>.</p>
+<p><a class="reference external" href="../glossary.html#position-ids">What are position IDs?</a></p>
+</li>
+<li><strong>lengths</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Length of each sentence that can be used to avoid performing attention on padding token indices.
+You can also use <cite>attention_mask</cite> for the same result (see above), kept here for compatbility.
+Indices selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">input_ids.size(-1)]</span></code>:</li>
+<li><strong>cache</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">torch.FloatTensor]</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – dictionary with <code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> that contains pre-computed
+hidden-states (key and values in the attention blocks) as computed by the model
+(see <cite>cache</cite> output below). Can be used to speed up sequential decoding.
+The dictionary object will be modified in-place during the forward pass to add newly computed hidden-states.</li>
+<li><strong>head_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_heads,)</span></code> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">(num_layers,</span> <span class="pre">num_heads)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to nullify selected heads of the self-attention modules.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">1</span></code> indicates the head is <strong>not masked</strong>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">0</span></code> indicates the head is <strong>masked</strong>.</li>
+<li><strong>input_embeds</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optionally, instead of passing <code class="xref py py-obj docutils literal notranslate"><span class="pre">input_ids</span></code> you can choose to directly pass an embedded representation.
+This is useful if you want more control over how to convert <cite>input_ids</cite> indices into associated vectors
+than the model’s internal embedding lookup matrix.</li>
+<li><strong>start_positions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for position (index) of the start of the labelled span for computing the token classification loss.
+Positions are clamped to the length of the sequence (<cite>sequence_length</cite>).
+Position outside of the sequence are not taken into account for computing the loss.</li>
+<li><strong>end_positions</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for position (index) of the end of the labelled span for computing the token classification loss.
+Positions are clamped to the length of the sequence (<cite>sequence_length</cite>).
+Position outside of the sequence are not taken into account for computing the loss.</li>
+<li><strong>is_impossible</strong> (<code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels whether a question has an answer or no answer (SQuAD 2.0)</li>
+<li><strong>cls_index</strong> (<code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for position (index) of the classification token to use as input for computing plausibility of the answer.</li>
+<li><strong>p_mask</strong> (<code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Optional mask of tokens which can’t be in answers (e.g. [CLS], [PAD], …).
+1.0 means token should be masked. 0.0 mean token is not masked.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>loss (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(1,)</span></code>, <cite>optional</cite>, returned if both <code class="xref py py-obj docutils literal notranslate"><span class="pre">start_positions</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">end_positions</span></code> are provided):</dt>
+<dd><p class="first last">Classification loss as the sum of start token, end token (and is_impossible if provided) classification losses.</p>
+</dd>
+<dt>start_top_log_probs (<code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">config.start_n_top)</span></code>, <cite>optional</cite>, returned if <code class="docutils literal notranslate"><span class="pre">start_positions</span></code> or <code class="docutils literal notranslate"><span class="pre">end_positions</span></code> is not provided):</dt>
+<dd><p class="first last">Log probabilities for the top config.start_n_top start token possibilities (beam-search).</p>
+</dd>
+<dt>start_top_index (<code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">config.start_n_top)</span></code>, <cite>optional</cite>, returned if <code class="docutils literal notranslate"><span class="pre">start_positions</span></code> or <code class="docutils literal notranslate"><span class="pre">end_positions</span></code> is not provided):</dt>
+<dd><p class="first last">Indices for the top config.start_n_top start token possibilities (beam-search).</p>
+</dd>
+<dt>end_top_log_probs (<code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">config.start_n_top</span> <span class="pre">*</span> <span class="pre">config.end_n_top)</span></code>, <cite>optional</cite>, returned if <code class="docutils literal notranslate"><span class="pre">start_positions</span></code> or <code class="docutils literal notranslate"><span class="pre">end_positions</span></code> is not provided):</dt>
+<dd><p class="first last">Log probabilities for the top <code class="docutils literal notranslate"><span class="pre">config.start_n_top</span> <span class="pre">*</span> <span class="pre">config.end_n_top</span></code> end token possibilities (beam-search).</p>
+</dd>
+<dt>end_top_index (<code class="docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">config.start_n_top</span> <span class="pre">*</span> <span class="pre">config.end_n_top)</span></code>, <cite>optional</cite>, returned if <code class="docutils literal notranslate"><span class="pre">start_positions</span></code> or <code class="docutils literal notranslate"><span class="pre">end_positions</span></code> is not provided):</dt>
+<dd><p class="first last">Indices for the top <code class="docutils literal notranslate"><span class="pre">config.start_n_top</span> <span class="pre">*</span> <span class="pre">config.end_n_top</span></code> end token possibilities (beam-search).</p>
+</dd>
+<dt>cls_logits (<code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, returned if <code class="docutils literal notranslate"><span class="pre">start_positions</span></code> or <code class="docutils literal notranslate"><span class="pre">end_positions</span></code> is not provided):</dt>
+<dd><p class="first last">Log probabilities for the <code class="docutils literal notranslate"><span class="pre">is_impossible</span></code> label of the answers.</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.</p>
+<p class="last">Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.XLMConfig" title="transformers.XLMConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">XLMConfig</span></code></a>) and inputs</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">XLMTokenizer</span><span class="p">,</span> <span class="n">XLMForQuestionAnswering</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">XLMTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">XLMForQuestionAnswering</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;xlm-mlm-en-2048&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">start_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">end_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">start_positions</span><span class="o">=</span><span class="n">start_positions</span><span class="p">,</span> <span class="n">end_positions</span><span class="o">=</span><span class="n">end_positions</span><span class="p">)</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="tfxlmmodel">
+<h2>TFXLMModel<a class="headerlink" href="#tfxlmmodel" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tfxlmwithlmheadmodel">
+<h2>TFXLMWithLMHeadModel<a class="headerlink" href="#tfxlmwithlmheadmodel" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tfxlmforsequenceclassification">
+<h2>TFXLMForSequenceClassification<a class="headerlink" href="#tfxlmforsequenceclassification" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tfxlmforquestionansweringsimple">
+<h2>TFXLMForQuestionAnsweringSimple<a class="headerlink" href="#tfxlmforquestionansweringsimple" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="xlnet.html" class="btn btn-neutral float-right" title="XLNet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gpt2.html" class="btn btn-neutral" title="OpenAI GPT2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, huggingface
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

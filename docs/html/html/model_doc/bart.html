@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bart &mdash; transformers 2.6.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/huggingface.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/code-snippets.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="T5" href="t5.html" />
+    <link rel="prev" title="FlauBERT" href="flaubert.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> transformers
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pretrained_models.html">Pretrained models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model_sharing.html">Model Sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks.html">Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html">Loading Google AI or OpenAI pre-trained weights or PyTorch dump</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serialization.html#serialization-best-practices">Serialization best-practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../converting_tensorflow_models.html">Converting Tensorflow Checkpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../torchscript.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multilingual.html">Multi-lingual models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks.html">Benchmarks</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Classes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/model.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/tokenizer.html">Tokenizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/pipelines.html">Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html">Optimizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html#schedules">Schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/optimizer_schedules.html#gradient-strategies">Gradient Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../main_classes/processors.html">Processors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migration.html">Migrating from pytorch-pretrained-bert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bertology.html">BERTology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Models</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="auto.html">AutoModels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpt.html">OpenAI GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformerxl.html">Transformer XL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpt2.html">OpenAI GPT2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xlm.html">XLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xlnet.html">XLNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roberta.html">RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distilbert.html">DistilBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camembert.html">CamemBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="albert.html">ALBERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xlmroberta.html">XLM-RoBERTa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flaubert.html">FlauBERT</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#paper">Paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-notes">Implementation Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bartmodel">BartModel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bartforconditionalgeneration">BartForConditionalGeneration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bartforsequenceclassification">BartForSequenceClassification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bartconfig">BartConfig</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="t5.html">T5</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">transformers</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Bart</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/model_doc/bart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bart">
+<h1>Bart<a class="headerlink" href="#bart" title="Permalink to this headline">¶</a></h1>
+<p><strong>DISCLAIMER:</strong> This model is still a work in progress, if you see something strange,
+file a <a class="reference external" href="https://github.com/huggingface/transformers/issues/new?assignees=&amp;labels=&amp;template=bug-report.md&amp;title">Github Issue</a> and assign
+&#64;sshleifer</p>
+<div class="section" id="paper">
+<h2>Paper<a class="headerlink" href="#paper" title="Permalink to this headline">¶</a></h2>
+<p>The Bart model was <a class="reference external" href="https://arxiv.org/abs/1910.13461">proposed</a> by Mike Lewis, Yinhan Liu, Naman Goyal, Marjan Ghazvininejad, Abdelrahman Mohamed, Omer Levy, Ves Stoyanov and Luke Zettlemoyer on 29 Oct, 2019.
+According to the abstract,</p>
+<ul class="simple">
+<li>Bart uses a standard seq2seq/machine translation architecture with a bidirectional encoder (like BERT) and a left-to-right decoder (like GPT).</li>
+<li>The pretraining task involves randomly shuffling the order of the original sentences and a novel in-filling scheme, where spans of text are replaced with a single mask token.</li>
+<li>BART is particularly effective when fine tuned for text generation but also works well for comprehension tasks. It matches the performance of RoBERTa with comparable training resources on GLUE and SQuAD, achieves new state-of-the-art results on a range of abstractive dialogue, question answering, and summarization tasks, with gains of up to 6 ROUGE.</li>
+</ul>
+<p>The Authors’ code can be found <a class="reference external" href="https://github.com/pytorch/fairseq/tree/master/examples/bart">here</a></p>
+</div>
+<div class="section" id="implementation-notes">
+<h2>Implementation Notes<a class="headerlink" href="#implementation-notes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Bart doesn’t use <code class="xref py py-obj docutils literal notranslate"><span class="pre">token_type_ids</span></code> for sequence classification. Use BartTokenizer.encode to get the proper splitting.</li>
+<li>The forward pass of <code class="docutils literal notranslate"><span class="pre">BartModel</span></code> will create decoder inputs (using the helper function <code class="docutils literal notranslate"><span class="pre">transformers.modeling_bart._prepare_bart_decoder_inputs</span></code>)  if they are not passed. This is different than some other modeling APIs.</li>
+<li>Model predictions are intended to be identical to the original implementation. This only works, however, if the string you pass to <code class="docutils literal notranslate"><span class="pre">fairseq.encode</span></code> starts with a space.</li>
+<li><code class="docutils literal notranslate"><span class="pre">BartForConditionalGeneration.generate</span></code> should be used for conditional generation tasks like summarization, see the example in that docstrings</li>
+<li>Models that load the <code class="docutils literal notranslate"><span class="pre">&quot;bart-large-cnn&quot;</span></code> weights will not have a <code class="docutils literal notranslate"><span class="pre">mask_token_id</span></code>, or be able to perform mask filling tasks.</li>
+</ul>
+</div>
+<div class="section" id="bartmodel">
+<h2>BartModel<a class="headerlink" href="#bartmodel" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.BartModel">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">BartModel</code><span class="sig-paren">(</span><em>config: transformers.configuration_bart.BartConfig</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_bart.html#BartModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.BartModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The bare BART Model outputting raw hidden-states without any specific head on top.</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class. Use it as a regular PyTorch Module and
+refer to the PyTorch documentation for all matters related to general usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.BartConfig" title="transformers.BartConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BartConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.BartModel.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids</em>, <em>attention_mask=None</em>, <em>decoder_input_ids=None</em>, <em>encoder_outputs=None</em>, <em>decoder_attention_mask=None</em>, <em>decoder_cached_states=None</em>, <em>generation_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_bart.html#BartModel.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.BartModel.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.BartModel" title="transformers.BartModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BartModel</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – Indices of input sequence tokens in the vocabulary. Use BartTokenizer.encode to produce them.
+Padding will be ignored by default should you provide it.
+Indices can be obtained using <code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BartTokenizer.encode(text)</span></code>.</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.Tensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to avoid performing attention on padding token indices in input_ids.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</li>
+<li><strong>encoder_outputs</strong> (tuple(<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Tuple consists of (<cite>last_hidden_state</cite>, <cite>optional</cite>: <cite>hidden_states</cite>, <cite>optional</cite>: <cite>attentions</cite>)
+<cite>last_hidden_state</cite> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) is a sequence of hidden-states at the output of the last layer of the encoder.
+Used in the cross-attention of the decoder.</li>
+<li><strong>decoder_input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">target_sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Provide for translation and summarization training. By default, the model will create this tensor by shifting the input_ids right, following the paper.</li>
+<li><strong>decoder_attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.BoolTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">tgt_seq_len)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Default behavior: generate a tensor that ignores pad tokens in decoder_input_ids. Causal mask will also be used by default.
+If you want to change padding behavior, you should read <code class="xref py py-func docutils literal notranslate"><span class="pre">_prepare_decoder_inputs()</span></code> and modify.
+See diagram 1 in the paper for more info on the default strategy</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="transformers.modeling_bart._prepare_bart_decoder_inputs">
+<code class="descclassname">transformers.modeling_bart.</code><code class="descname">_prepare_bart_decoder_inputs</code><span class="sig-paren">(</span><em>config</em>, <em>input_ids</em>, <em>decoder_input_ids=None</em>, <em>decoder_padding_mask=None</em>, <em>causal_mask_dtype=torch.float32</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_bart.html#_prepare_bart_decoder_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.modeling_bart._prepare_bart_decoder_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare masks that ignore padding tokens in the decoder and a causal mask for the decoder if
+none are provided. This mimics the default behavior in fairseq. To override it pass in masks.
+Note: this is not called during generation</p>
+</dd></dl>
+
+</div>
+<div class="section" id="bartforconditionalgeneration">
+<h2>BartForConditionalGeneration<a class="headerlink" href="#bartforconditionalgeneration" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.BartForConditionalGeneration">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">BartForConditionalGeneration</code><span class="sig-paren">(</span><em>config: transformers.configuration_bart.BartConfig</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_bart.html#BartForConditionalGeneration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.BartForConditionalGeneration" title="Permalink to this definition">¶</a></dt>
+<dd><p>The BART Model with a language modeling head. Can be used for summarization.</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class. Use it as a regular PyTorch Module and
+refer to the PyTorch documentation for all matters related to general usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.BartConfig" title="transformers.BartConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BartConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BartTokenizer</span><span class="p">,</span> <span class="n">BartForConditionalGeneration</span><span class="p">,</span> <span class="n">BartConfig</span>
+<span class="c1"># see ``examples/summarization/bart/evaluate_cnn.py`` for a longer example</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BartForConditionalGeneration</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bart-large-cnn&#39;</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BartTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bart-large-cnn&#39;</span><span class="p">)</span>
+<span class="n">ARTICLE_TO_SUMMARIZE</span> <span class="o">=</span> <span class="s2">&quot;My friends are cool but they eat too many carbs.&quot;</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">batch_encode_plus</span><span class="p">([</span><span class="n">ARTICLE_TO_SUMMARIZE</span><span class="p">],</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>
+<span class="c1"># Generate Summary</span>
+<span class="n">summary_ids</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">],</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clean_up_tokenization_spaces</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">summary_ids</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="transformers.BartForConditionalGeneration.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids</em>, <em>attention_mask=None</em>, <em>encoder_outputs=None</em>, <em>decoder_input_ids=None</em>, <em>decoder_attention_mask=None</em>, <em>decoder_cached_states=None</em>, <em>lm_labels=None</em>, <em>generation_mode=False</em>, <em>**unused</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_bart.html#BartForConditionalGeneration.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.BartForConditionalGeneration.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.BartForConditionalGeneration" title="transformers.BartForConditionalGeneration"><code class="xref py py-class docutils literal notranslate"><span class="pre">BartForConditionalGeneration</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – Indices of input sequence tokens in the vocabulary. Use BartTokenizer.encode to produce them.
+Padding will be ignored by default should you provide it.
+Indices can be obtained using <code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BartTokenizer.encode(text)</span></code>.</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.Tensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to avoid performing attention on padding token indices in input_ids.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</li>
+<li><strong>encoder_outputs</strong> (tuple(<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Tuple consists of (<cite>last_hidden_state</cite>, <cite>optional</cite>: <cite>hidden_states</cite>, <cite>optional</cite>: <cite>attentions</cite>)
+<cite>last_hidden_state</cite> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) is a sequence of hidden-states at the output of the last layer of the encoder.
+Used in the cross-attention of the decoder.</li>
+<li><strong>decoder_input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">target_sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Provide for translation and summarization training. By default, the model will create this tensor by shifting the input_ids right, following the paper.</li>
+<li><strong>decoder_attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.BoolTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">tgt_seq_len)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Default behavior: generate a tensor that ignores pad tokens in decoder_input_ids. Causal mask will also be used by default.
+If you want to change padding behavior, you should read <code class="xref py py-func docutils literal notranslate"><span class="pre">_prepare_decoder_inputs()</span></code> and modify.
+See diagram 1 in the paper for more info on the default strategy</li>
+<li><strong>masked_lm_labels</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for computing the masked language modeling loss.
+Indices should either be in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">config.vocab_size]</span></code> or -100 (see <code class="docutils literal notranslate"><span class="pre">input_ids</span></code> docstring).
+Tokens with indices set to <code class="docutils literal notranslate"><span class="pre">-100</span></code> are ignored (masked), the loss is only computed for the tokens
+with labels
+in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">config.vocab_size]</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>masked_lm_loss (<cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">masked_lm_labels</span></code> is provided) <code class="docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="docutils literal notranslate"><span class="pre">(1,)</span></code>:</dt>
+<dd><p class="first last">Masked language modeling loss.</p>
+</dd>
+<dt>prediction_scores (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">config.vocab_size)</span></code>)</dt>
+<dd><p class="first last">Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.</p>
+<p class="last">Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.</p>
+<p class="last">Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="roberta.html#transformers.RobertaConfig" title="transformers.RobertaConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobertaConfig</span></code></a>) and inputs</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mask filling only works for bart-large</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BartTokenizer</span><span class="p">,</span> <span class="n">BartForConditionalGeneration</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BartTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bart-large&#39;</span><span class="p">)</span>
+<span class="n">TXT</span> <span class="o">=</span> <span class="s2">&quot;My friends are &lt;mask&gt; but they eat too many carbs.&quot;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BartForConditionalGeneration</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bart-large&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">batch_encode_plus</span><span class="p">([</span><span class="n">TXT</span><span class="p">],</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)[</span><span class="s1">&#39;input_ids&#39;</span><span class="p">]</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">masked_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">input_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">mask_token_id</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="n">logits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">masked_index</span><span class="p">]</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">values</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">probs</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">predictions</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="c1"># [&#39;good&#39;, &#39;great&#39;, &#39;all&#39;, &#39;really&#39;, &#39;very&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="transformers.BartForConditionalGeneration.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>input_ids=None</em>, <em>max_length=None</em>, <em>min_length=None</em>, <em>do_sample=None</em>, <em>early_stopping=None</em>, <em>num_beams=None</em>, <em>temperature=None</em>, <em>top_k=None</em>, <em>top_p=None</em>, <em>repetition_penalty=None</em>, <em>bos_token_id=None</em>, <em>pad_token_id=None</em>, <em>eos_token_id=None</em>, <em>length_penalty=None</em>, <em>no_repeat_ngram_size=None</em>, <em>num_return_sequences=None</em>, <em>attention_mask=None</em>, <em>decoder_start_token_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#transformers.BartForConditionalGeneration.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates sequences for models with a LM head. The method currently supports greedy decoding, beam-search decoding, sampling with temperature, sampling with top-k or nucleus sampling.</p>
+<p>Adapted in part from <a class="reference external" href="https://github.com/facebookresearch/XLM/blob/9e6f6814d17be4fe5b15f2e6c43eb2b2d76daeb4/src/model/transformer.py#L529">Facebook’s XLM beam search code</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> – (<cite>optional</cite>) <cite>torch.LongTensor</cite> of shape <cite>(batch_size, sequence_length)</cite>
+The sequence used as a prompt for the generation. If <cite>None</cite> the method initializes
+it as an empty <cite>torch.LongTensor</cite> of shape <cite>(1,)</cite>.</li>
+<li><strong>max_length</strong> – (<cite>optional</cite>) int
+The max length of the sequence to be generated.  Between <cite>min_length</cite> and infinity. Default to 20.</li>
+<li><strong>min_length</strong> – (<cite>optional</cite>) int
+The min length of the sequence to be generated.  Between 0 and infinity. Default to 0.</li>
+<li><strong>do_sample</strong> – (<cite>optional</cite>) bool
+If set to <cite>False</cite> greedy decoding is used. Otherwise sampling is used. Defaults to <cite>False</cite> as defined in <cite>configuration_utils.PretrainedConfig</cite>.</li>
+<li><strong>early_stopping</strong> – (<cite>optional</cite>) bool
+if set to <cite>True</cite> beam search is stopped when at least <cite>num_beams</cite> sentences finished per batch. Defaults to <cite>False</cite> as defined in <cite>configuration_utils.PretrainedConfig</cite>.</li>
+<li><strong>num_beams</strong> – (<cite>optional</cite>) int
+Number of beams for beam search. Must be between 1 and infinity. 1 means no beam search. Default to 1.</li>
+<li><strong>temperature</strong> – (<cite>optional</cite>) float
+The value used to module the next token probabilities. Must be strictly positive. Default to 1.0.</li>
+<li><strong>top_k</strong> – (<cite>optional</cite>) int
+The number of highest probability vocabulary tokens to keep for top-k-filtering. Between 1 and infinity. Default to 50.</li>
+<li><strong>top_p</strong> – (<cite>optional</cite>) float
+The cumulative probability of parameter highest probability vocabulary tokens to keep for nucleus sampling. Must be between 0 and 1. Default to 1.</li>
+<li><strong>repetition_penalty</strong> – (<cite>optional</cite>) float
+The parameter for repetition penalty. Between 1.0 and infinity. 1.0 means no penalty. Default to 1.0.</li>
+<li><strong>pad_token_id</strong> – (<cite>optional</cite>) int
+Padding token. Default to specicic model pad_token_id or None if it does not exist.</li>
+<li><strong>bos_token_id</strong> – (<cite>optional</cite>) int
+BOS token. Defaults to bos_token_id as defined in the models config.</li>
+<li><strong>pad_token_id</strong> – (<cite>optional</cite>) int
+Pad token. Defaults to pad_token_id as defined in the models config.</li>
+<li><strong>eos_token_ids</strong> – (<cite>optional</cite>) int or list of int
+End of sequence token or list of tokens to stop the generation. Default to eos_token_ids as defined in the models config.</li>
+<li><strong>length_penalty</strong> – (<cite>optional</cite>) float
+Exponential penalty to the length. Default to 1.</li>
+<li><strong>no_repeat_ngram_size</strong> – (<cite>optional</cite>) int
+If set to int &gt; 0, all ngrams of size <cite>no_repeat_ngram_size</cite> can only occur once.</li>
+<li><strong>num_return_sequences</strong> – (<cite>optional</cite>) int
+The number of independently computed returned sequences for each element in the batch. Default to 1.</li>
+<li><strong>attention_mask</strong> (<cite>optional</cite>) – <cite>torch.LongTensor</cite> of same shape as <cite>input_ids</cite>
+Mask to avoid performing attention on padding token indices.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.
+Defaults to <cite>None</cite>.</li>
+<li><strong>are attention masks?</strong> (<em>What</em>) – </li>
+<li><strong>decoder_start_token_id=None</strong> – (<cite>optional</cite>) int
+If an encoder-decoder model starts decoding with a different token than BOS.
+Defaults to <cite>None</cite> and is changed to <cite>BOS</cite> later.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt><cite>torch.LongTensor</cite> of shape <cite>(batch_size * num_return_sequences, sequence_length)</cite></dt>
+<dd><p class="first last">sequence_length is either equal to max_length or shorter if all batches finished early due to the <cite>eos_token_id</cite></p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">output</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>  <span class="c1"># do greedy decoding</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;openai-gpt&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;openai-gpt&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">input_context</span> <span class="o">=</span> <span class="s1">&#39;The dog&#39;</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">input_context</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>  <span class="c1"># encode input context</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>  <span class="c1"># generate 3 independent sequences using beam search decoding (5 beams) with sampling from initial context &#39;The dog&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="c1">#  3 output sequences were generated</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;distilgpt2&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">input_context</span> <span class="o">=</span> <span class="s1">&#39;The dog&#39;</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">input_context</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>  <span class="c1"># encode input context</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 3 generate sequences using by sampling</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="c1">#  3 output sequences were generated</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">)</span>   <span class="c1"># Initialize tokenizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelWithLMHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.</span>
+<span class="n">input_context</span> <span class="o">=</span> <span class="s1">&#39;Legal My neighbor is&#39;</span>  <span class="c1"># &quot;Legal&quot; is one of the control codes for ctrl</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">input_context</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>  <span class="c1"># encode input context</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">repetition_penalty</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>  <span class="c1"># generate sequences</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Generated: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="bartforsequenceclassification">
+<h2>BartForSequenceClassification<a class="headerlink" href="#bartforsequenceclassification" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.BartForSequenceClassification">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">BartForSequenceClassification</code><span class="sig-paren">(</span><em>config: transformers.configuration_bart.BartConfig</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_bart.html#BartForSequenceClassification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.BartForSequenceClassification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bart model with a sequence classification/head on top (a linear layer on top of the pooled output) e.g. for GLUE tasks.</p>
+<p>This model is a PyTorch <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#torch.nn.Module">torch.nn.Module</a> sub-class. Use it as a regular PyTorch Module and
+refer to the PyTorch documentation for all matters related to general usage and behavior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#transformers.BartConfig" title="transformers.BartConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BartConfig</span></code></a>) – Model configuration class with all the parameters of the model.
+Initializing with a config file does not load the weights associated with the model, only the configuration.
+Check out the <a class="reference internal" href="../main_classes/model.html#transformers.PreTrainedModel.from_pretrained" title="transformers.PreTrainedModel.from_pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_pretrained()</span></code></a> method to load the model weights.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="transformers.BartForSequenceClassification.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input_ids</em>, <em>attention_mask=None</em>, <em>encoder_outputs=None</em>, <em>decoder_input_ids=None</em>, <em>decoder_attention_mask=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/modeling_bart.html#BartForSequenceClassification.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.BartForSequenceClassification.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#transformers.BartForSequenceClassification" title="transformers.BartForSequenceClassification"><code class="xref py py-class docutils literal notranslate"><span class="pre">BartForSequenceClassification</span></code></a> forward method, overrides the <code class="xref py py-func docutils literal notranslate"><span class="pre">__call__()</span></code> special method.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+pre and post processing steps while the latter silently ignores them.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>) – Indices of input sequence tokens in the vocabulary. Use BartTokenizer.encode to produce them.
+Padding will be ignored by default should you provide it.
+Indices can be obtained using <code class="xref py py-class docutils literal notranslate"><span class="pre">transformers.BartTokenizer.encode(text)</span></code>.</li>
+<li><strong>attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.Tensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Mask to avoid performing attention on padding token indices in input_ids.
+Mask values selected in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>:
+<code class="docutils literal notranslate"><span class="pre">1</span></code> for tokens that are NOT MASKED, <code class="docutils literal notranslate"><span class="pre">0</span></code> for MASKED tokens.</li>
+<li><strong>encoder_outputs</strong> (tuple(<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Tuple consists of (<cite>last_hidden_state</cite>, <cite>optional</cite>: <cite>hidden_states</cite>, <cite>optional</cite>: <cite>attentions</cite>)
+<cite>last_hidden_state</cite> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) is a sequence of hidden-states at the output of the last layer of the encoder.
+Used in the cross-attention of the decoder.</li>
+<li><strong>decoder_input_ids</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">target_sequence_length)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Provide for translation and summarization training. By default, the model will create this tensor by shifting the input_ids right, following the paper.</li>
+<li><strong>decoder_attention_mask</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.BoolTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">tgt_seq_len)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Default behavior: generate a tensor that ignores pad tokens in decoder_input_ids. Causal mask will also be used by default.
+If you want to change padding behavior, you should read <code class="xref py py-func docutils literal notranslate"><span class="pre">_prepare_decoder_inputs()</span></code> and modify.
+See diagram 1 in the paper for more info on the default strategy</li>
+<li><strong>labels</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.LongTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,)</span></code>, <cite>optional</cite>, defaults to <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>) – Labels for computing the sequence classification/regression loss.
+Indices should be in <code class="xref py py-obj docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">...,</span> <span class="pre">config.num_labels</span> <span class="pre">-</span> <span class="pre">1]</span></code>.
+If <code class="xref py py-obj docutils literal notranslate"><span class="pre">config.num_labels</span> <span class="pre">&gt;</span> <span class="pre">1</span></code> a classification loss is computed (Cross-Entropy).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>loss (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(1,)</span></code>, <cite>optional</cite>, returned when <code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code> is provided):</dt>
+<dd><p class="first last">Classification loss (cross entropy)</p>
+</dd>
+<dt>logits (<code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">config.num_labels)</span></code>):</dt>
+<dd><p class="first last">Classification (or regression if config.num_labels==1) scores (before SoftMax).</p>
+</dd>
+<dt>hidden_states (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_hidden_states=True</span></code>):</dt>
+<dd><p class="first last">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for the output of the embeddings + one for the output of each layer)
+of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">hidden_size)</span></code>.
+Hidden-states of the model at the output of each layer plus the initial embedding outputs.</p>
+</dd>
+<dt>attentions (<code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code>, <cite>optional</cite>, returned when <code class="docutils literal notranslate"><span class="pre">config.output_attentions=True</span></code>):</dt>
+<dd><p class="first last">Tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.FloatTensor</span></code> (one for each layer) of shape <code class="xref py py-obj docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">num_heads,</span> <span class="pre">sequence_length,</span> <span class="pre">sequence_length)</span></code>.
+Attentions weights after the attention softmax, used to compute the weighted average in the
+self-attention
+heads.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple(torch.FloatTensor)</span></code> comprising various elements depending on the configuration (<a class="reference internal" href="#transformers.BartConfig" title="transformers.BartConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BartConfig</span></code></a>) and inputs</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="k">import</span> <span class="n">BartTokenizer</span><span class="p">,</span> <span class="n">BartForSequenceClassification</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BartTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bart-large&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BartForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bart-large&#39;</span><span class="p">)</span>
+<span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span>
+<span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Batch size 1</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">loss</span><span class="p">,</span> <span class="n">logits</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="bartconfig">
+<h2>BartConfig<a class="headerlink" href="#bartconfig" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="transformers.BartConfig">
+<em class="property">class </em><code class="descclassname">transformers.</code><code class="descname">BartConfig</code><span class="sig-paren">(</span><em>activation_dropout=0.0</em>, <em>activation_function='gelu'</em>, <em>vocab_size=50265</em>, <em>d_model=1024</em>, <em>encoder_ffn_dim=4096</em>, <em>encoder_layers=12</em>, <em>encoder_attention_heads=16</em>, <em>decoder_ffn_dim=4096</em>, <em>decoder_layers=12</em>, <em>decoder_attention_heads=16</em>, <em>encoder_layerdrop=0.0</em>, <em>decoder_layerdrop=0.0</em>, <em>attention_dropout=0.0</em>, <em>dropout=0.1</em>, <em>max_position_embeddings=1024</em>, <em>init_std=0.02</em>, <em>classifier_dropout=0.0</em>, <em>output_past=False</em>, <em>num_labels=3</em>, <em>is_encoder_decoder=True</em>, <em>pad_token_id=1</em>, <em>bos_token_id=0</em>, <em>eos_token_id=2</em>, <em>**common_kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/transformers/configuration_bart.html#BartConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#transformers.BartConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration class for Bart. Parameters are renamed from the fairseq implementation</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="t5.html" class="btn btn-neutral float-right" title="T5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="flaubert.html" class="btn btn-neutral" title="FlauBERT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, huggingface
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/js/custom.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
